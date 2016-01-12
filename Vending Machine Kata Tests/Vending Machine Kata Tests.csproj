@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -51,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Display\DisplayControllerTest.cs" />
     <Compile Include="MonetaryMechanism\CoinAccepterTest.cs" />
     <Compile Include="MonetaryMechanism\CoinPurseTest.cs" />
     <Compile Include="MonetaryMechanism\CoinReturnTest.cs" />
