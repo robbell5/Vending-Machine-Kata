@@ -14,14 +14,18 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public decimal AmountAvailableToReturn { get; set; }
         public int NumberOfTimesAddCoinWasCalled { private set; get; }
         public int NumberOfTimesAmountAvailableWasCalled { private set; get; }
+        public List<ICoinPurseObserver> RegisteredCoinPurseObservers { private set; get; }
+        public int NumberOfTimesRegisterObserverWasCalled { get; set; }
 
         public MockCoinPurse()
         {
             Coins = new List<ICoin>();
             CoinsPassedToAddCoin = new List<ICoin>();
+            RegisteredCoinPurseObservers = new List<ICoinPurseObserver>();
             AmountAvailableToReturn = 0;
             NumberOfTimesAddCoinWasCalled = 0;
             NumberOfTimesAmountAvailableWasCalled = 0;
+            NumberOfTimesRegisterObserverWasCalled = 0;
         }
 
         public void AddCoin(ICoin coin)
@@ -38,5 +42,11 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         }
 
         public List<ICoin> Coins { get; }
+
+        public void RegisterObserver(ICoinPurseObserver coinPurseObserver)
+        {
+            NumberOfTimesRegisterObserverWasCalled++;
+            RegisteredCoinPurseObservers.Add(coinPurseObserver);
+        }
     }
 }

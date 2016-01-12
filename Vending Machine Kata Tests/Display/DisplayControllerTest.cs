@@ -13,7 +13,7 @@ namespace Vending_Machine_Kata_Tests.Display
         [Test]
         public void TestImplementsInterface()
         {
-            DisplayController displayController = new DisplayController(new TextBox(), null);
+            DisplayController displayController = new DisplayController(new TextBox(), new MockCoinPurse());
 
             Assert.IsInstanceOf(typeof(IDisplayController), displayController);
             Assert.IsInstanceOf(typeof(ICoinPurseObserver), displayController);
@@ -32,10 +32,20 @@ namespace Vending_Machine_Kata_Tests.Display
         }
 
         [Test]
+        public void TestRegistersItselfAsObserverWithCoinPurse()
+        {
+            MockCoinPurse mockCoinPurse = new MockCoinPurse();
+            DisplayController displayController = new DisplayController(new TextBox(), mockCoinPurse);
+
+            Assert.AreEqual(1, mockCoinPurse.NumberOfTimesRegisterObserverWasCalled);
+            Assert.AreEqual(displayController, mockCoinPurse.RegisteredCoinPurseObservers[0]);
+        }
+
+        [Test]
         public void TestSetsTextBoxToMultiline()
         {
             TextBox displayTextBox = new TextBox();
-            DisplayController displayController = new DisplayController(displayTextBox, null);
+            DisplayController displayController = new DisplayController(displayTextBox, new MockCoinPurse());
 
             Assert.True(displayTextBox.Multiline);
         }
@@ -44,7 +54,7 @@ namespace Vending_Machine_Kata_Tests.Display
         public void TestSetsFirstMessageOnDisplayTextBox()
         {
             TextBox displayTextBox = new TextBox();
-            new DisplayController(displayTextBox, null);
+            new DisplayController(displayTextBox, new MockCoinPurse());
 
             string expectedText = "INSERT COINS" + Environment.NewLine;
 

@@ -15,6 +15,7 @@ namespace Vending_Machine_Kata.Display
         {
             Display = displayTextBox;
             CoinPurse = coinPurse;
+            CoinPurse.RegisterObserver(this);
             FormatDisplay();
         }
 
