@@ -10,7 +10,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
 {
     public class CoinPurse : ICoinPurse
     {
-        public List<ICoin> Coins { get; }
+        public List<ICoin> Coins { get; private set; }
         public List<ICoinPurseObserver> Observers { get; private set; }
 
         public CoinPurse()
@@ -41,6 +41,16 @@ namespace Vending_Machine_Kata.MonetaryMechanism
             {
                 coinPurseObserver.CoinPurseUpdated();
             }
+        }
+
+        public List<ICoin> Clear()
+        {
+            List<ICoin> clearedCoins = new List<ICoin>();
+            clearedCoins.AddRange(Coins);
+
+            Coins = new List<ICoin>();
+
+            return clearedCoins;
         }
     }
 }

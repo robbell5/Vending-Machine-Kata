@@ -13,5 +13,6 @@ namespace Vending_Machine_Kata.MonetaryMechanism
         decimal AmountAvailable();
         List<ICoin> Coins { get; }
         void RegisterObserver(ICoinPurseObserver coinPurseObserver);
+        List<ICoin> Clear();
     }
 }

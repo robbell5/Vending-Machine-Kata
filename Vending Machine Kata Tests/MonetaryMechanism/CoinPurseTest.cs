@@ -124,5 +124,21 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreEqual(1, mockCoinPurseObserverOne.NumberOfTimesCoinPurseUpdatedCalled);
             Assert.AreEqual(1, mockCoinPurseObserverTwo.NumberOfTimesCoinPurseUpdatedCalled);
         }
+
+        [Test]
+        public void TestClearReturnsAllCoinsAndEmptiesPurse()
+        {
+            CoinPurse coinPurse = new CoinPurse();
+            MockCoin mockCoin = new MockCoin();
+
+            coinPurse.AddCoin(mockCoin);
+
+            List<ICoin> coinsReturnedFromClear = coinPurse.Clear();
+
+            Assert.AreEqual(1, coinsReturnedFromClear.Count);
+            Assert.AreEqual(mockCoin, coinsReturnedFromClear[0]);
+
+            Assert.AreEqual(0, coinPurse.Coins.Count);
+        }
     }
 }

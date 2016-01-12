@@ -48,5 +48,10 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             NumberOfTimesRegisterObserverWasCalled++;
             RegisteredCoinPurseObservers.Add(coinPurseObserver);
         }
+
+        public List<ICoin> Clear()
+        {
+            return null;
+        }
     }
 }
