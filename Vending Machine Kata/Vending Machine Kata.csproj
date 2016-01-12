@@ -56,6 +56,7 @@
     <Compile Include="MonetaryMechanism\Coin\ICoin.cs" />
     <Compile Include="MonetaryMechanism\Coin\Nickel.cs" />
     <Compile Include="MonetaryMechanism\Coin\NullCoin.cs" />
+    <Compile Include="MonetaryMechanism\Coin\Penny.cs" />
     <Compile Include="MonetaryMechanism\Coin\Quarter.cs" />
     <Compile Include="MonetaryMechanism\ICoinAccepter.cs" />
     <Compile Include="Form1.cs">
