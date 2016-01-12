@@ -68,6 +68,7 @@
     <Compile Include="MonetaryMechanism\MockCoinPurse.cs" />
     <Compile Include="MonetaryMechanism\MockCoinPurseObserver.cs" />
     <Compile Include="MonetaryMechanism\MockCoinReturn.cs" />
+    <Compile Include="MonetaryMechanism\UserControls\ChangeReturnButtonControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
