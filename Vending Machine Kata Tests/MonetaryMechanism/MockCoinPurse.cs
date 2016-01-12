@@ -17,6 +17,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
         public MockCoinPurse()
         {
+            Coins = new List<ICoin>();
             CoinsPassedToAddCoin = new List<ICoin>();
             AmountAvailableToReturn = 0;
             NumberOfTimesAddCoinWasCalled = 0;
@@ -25,6 +26,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
         public void AddCoin(ICoin coin)
         {
+            Coins.Add(coin);
             NumberOfTimesAddCoinWasCalled++;
             CoinsPassedToAddCoin.Add(coin);
         }
@@ -34,5 +36,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             NumberOfTimesAmountAvailableWasCalled++;
             return AmountAvailableToReturn;
         }
+
+        public List<ICoin> Coins { get; }
     }
 }

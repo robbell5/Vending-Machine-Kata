@@ -11,5 +11,6 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     {
         void AddCoin(ICoin coin);
         decimal AmountAvailable();
+        List<ICoin> Coins { get; }
     }
 }

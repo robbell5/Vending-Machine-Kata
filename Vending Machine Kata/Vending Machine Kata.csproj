@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="MonetaryMechanism\CoinAccepter.cs" />
     <Compile Include="MonetaryMechanism\CoinPurse.cs" />
+    <Compile Include="MonetaryMechanism\CoinReturn.cs" />
     <Compile Include="MonetaryMechanism\Coin\CoinFactory.cs" />
     <Compile Include="MonetaryMechanism\Coin\Dime.cs" />
     <Compile Include="MonetaryMechanism\Coin\ICoinFactory.cs" />
@@ -64,6 +65,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MonetaryMechanism\ICoinPurse.cs" />
+    <Compile Include="MonetaryMechanism\ICoinReturn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
