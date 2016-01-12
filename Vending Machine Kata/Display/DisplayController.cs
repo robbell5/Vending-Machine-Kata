@@ -26,7 +26,11 @@ namespace Vending_Machine_Kata.Display
 
         public void CoinPurseUpdated()
         {
-            DisplayMessage(FormatValueToMoney(CoinPurse.AmountAvailable()));
+            decimal amountAvailableInCoinPurse = CoinPurse.AmountAvailable();
+
+            DisplayMessage(amountAvailableInCoinPurse > 0
+                ? FormatValueToMoney(amountAvailableInCoinPurse)
+                : IntialMessage);
         }
 
         private static string FormatValueToMoney(decimal value)

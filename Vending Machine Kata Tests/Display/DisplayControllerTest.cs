@@ -76,5 +76,23 @@ namespace Vending_Machine_Kata_Tests.Display
 
             Assert.AreEqual(expectedDisplayText, displayTextBox.Text);
         }
+
+        [Test]
+        public void TestSetsDisplayTestBackToInitialMessageIfCoinPurseIsZero()
+        {
+            TextBox displayTextBox = new TextBox();
+            MockCoinPurse mockCoinPurse = new MockCoinPurse { AmountAvailableToReturn = 0.99m };
+
+            DisplayController displayController = new DisplayController(displayTextBox, mockCoinPurse);
+
+            displayController.CoinPurseUpdated();
+
+            Assert.AreNotEqual("INSERT COINS", displayTextBox.Text);
+
+            mockCoinPurse.AmountAvailableToReturn = 0;
+            displayController.CoinPurseUpdated();
+
+            Assert.AreEqual("INSERT COINS", displayTextBox.Text);
+        }
     }
 }
