@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoinAccepter\Coin\CoinFactory.cs" />
+    <Compile Include="CoinAccepter\Coin\Dime.cs" />
+    <Compile Include="CoinAccepter\Coin\ICoinFactory.cs" />
+    <Compile Include="CoinAccepter\Coin\CoinPhysicalProperties.cs" />
+    <Compile Include="CoinAccepter\Coin\ICoin.cs" />
+    <Compile Include="CoinAccepter\Coin\Nickel.cs" />
+    <Compile Include="CoinAccepter\Coin\NullCoin.cs" />
+    <Compile Include="CoinAccepter\Coin\Quarter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
