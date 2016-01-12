@@ -51,11 +51,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CoinAccepter\Coin\CoinFactoryTest.cs" />
-    <Compile Include="CoinAccepter\Coin\DimeTest.cs" />
-    <Compile Include="CoinAccepter\Coin\NickleTest.cs" />
-    <Compile Include="CoinAccepter\Coin\NullCoinTest.cs" />
-    <Compile Include="CoinAccepter\Coin\QuarterTest.cs" />
+    <Compile Include="MonetaryMechanism\CoinAccepterTest.cs" />
+    <Compile Include="MonetaryMechanism\CoinPurseTest.cs" />
+    <Compile Include="MonetaryMechanism\Coin\CoinFactoryTest.cs" />
+    <Compile Include="MonetaryMechanism\Coin\DimeTest.cs" />
+    <Compile Include="MonetaryMechanism\Coin\MockCoin.cs" />
+    <Compile Include="MonetaryMechanism\Coin\MockCoinFactory.cs" />
+    <Compile Include="MonetaryMechanism\Coin\NickleTest.cs" />
+    <Compile Include="MonetaryMechanism\Coin\NullCoinTest.cs" />
+    <Compile Include="MonetaryMechanism\Coin\QuarterTest.cs" />
+    <Compile Include="MonetaryMechanism\MockCoinPurse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

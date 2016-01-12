@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Vending_Machine_Kata.CoinAccepter.Coin
+﻿namespace Vending_Machine_Kata.MonetaryMechanism.Coin
 {
     public class CoinFactory : ICoinFactory
     {
