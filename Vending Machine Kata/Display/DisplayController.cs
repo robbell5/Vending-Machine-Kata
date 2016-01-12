@@ -9,6 +9,12 @@ namespace Vending_Machine_Kata.Display
         public DisplayController(TextBox displayTextBox)
         {
             Display = displayTextBox;
+            FormatDisplay();
+        }
+
+        private void FormatDisplay()
+        {
+            Display.Multiline = true;
         }
     }
 }

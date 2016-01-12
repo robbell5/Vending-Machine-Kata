@@ -10,7 +10,7 @@ namespace Vending_Machine_Kata_Tests.Display
         [Test]
         public void TestImplementsInterface()
         {
-            Assert.IsInstanceOf(typeof(IDisplayController), new DisplayController(null));
+            Assert.IsInstanceOf(typeof(IDisplayController), new DisplayController(new TextBox()));
         }
 
         [Test]
@@ -20,6 +20,15 @@ namespace Vending_Machine_Kata_Tests.Display
             DisplayController displayController = new DisplayController(expectedTextBox);
 
             Assert.AreSame(expectedTextBox, displayController.Display);
+        }
+
+        [Test]
+        public void TestConstructorSetsTextBoxToMultiline()
+        {
+            TextBox displayTextBox = new TextBox();
+            DisplayController displayController = new DisplayController(displayTextBox);
+
+            Assert.True(displayTextBox.Multiline);
         }
     }
 }
