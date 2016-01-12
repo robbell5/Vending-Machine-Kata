@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
 {
@@ -20,7 +22,10 @@ namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
 
         private void ButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinPurse.Clear();
+            List<ICoin> coinsFromPurse = CoinPurse.Clear();
+
+            foreach (ICoin coinFromPurse in coinsFromPurse)
+                CoinReturn.AddCoin(coinFromPurse);
         }
     }
 }
