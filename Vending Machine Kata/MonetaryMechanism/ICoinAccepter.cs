@@ -6,6 +6,6 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     {
         ICoinFactory CoinFactory { get; }
         ICoinPurse CoinPurse { get; }
-        decimal Accept(CoinPhysicalProperties.SizeAndWeight coinSizeAndWeight);
+        decimal Accept(CoinSize coinSize);
     }
 }

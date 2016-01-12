@@ -2,6 +2,6 @@
 {
     public interface ICoinFactory
     {
-        ICoin BuildCoin(CoinPhysicalProperties.SizeAndWeight sizeAndWeight);
+        ICoin BuildCoin(CoinSize coinSize);
     }
 }

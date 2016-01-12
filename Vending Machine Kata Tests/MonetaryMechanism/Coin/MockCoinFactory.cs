@@ -10,7 +10,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
     public class MockCoinFactory : ICoinFactory
     {
         public int NumberOfTimesBuildCoinCalled { get; private set; }
-        public CoinPhysicalProperties.SizeAndWeight LastSizeAndWeightPassed { get; private set; }
+        public CoinSize LastSizeAndWeightPassed { get; private set; }
         public MockCoin CoinToReturn { get; set; }
 
         public MockCoinFactory()
@@ -19,9 +19,9 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
             CoinToReturn = new MockCoin();
         }
 
-        public ICoin BuildCoin(CoinPhysicalProperties.SizeAndWeight sizeAndWeight)
+        public ICoin BuildCoin(CoinSize coinSize)
         {
-            LastSizeAndWeightPassed = sizeAndWeight;
+            LastSizeAndWeightPassed = coinSize;
             NumberOfTimesBuildCoinCalled++;
             return CoinToReturn;
         }

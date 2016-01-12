@@ -16,11 +16,13 @@ namespace Vending_Machine_Kata.MonetaryMechanism
             CoinReturn = coinReturn;
         }
 
-        public decimal Accept(CoinPhysicalProperties.SizeAndWeight coinSizeAndWeight)
+        public decimal Accept(CoinSize coinSize)
         {
-            ICoin receivedCoin = CoinFactory.BuildCoin(coinSizeAndWeight);
+            ICoin receivedCoin = CoinFactory.BuildCoin(coinSize);
 
-            if (receivedCoin.Value > 0)
+            const decimal fiveCents = 0.05m;
+
+            if (receivedCoin.Value >= fiveCents)
                 CoinPurse.AddCoin(receivedCoin);
             else
                 CoinReturn.AddCoin(receivedCoin);

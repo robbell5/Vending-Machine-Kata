@@ -4,17 +4,18 @@ namespace Vending_Machine_Kata.MonetaryMechanism.Coin
 {
     public class CoinFactory : ICoinFactory
     {
-        public ICoin BuildCoin(CoinPhysicalProperties.SizeAndWeight sizeAndWeight)
+        public ICoin BuildCoin(CoinSize coinSize)
         {
-            switch (sizeAndWeight)
+            switch (coinSize)
             {
-                case CoinPhysicalProperties.SizeAndWeight.SMALL:
+                case CoinSize.SMALL:
+                    return new Penny();
+                case CoinSize.TINY:
                     return new Dime();
-                case CoinPhysicalProperties.SizeAndWeight.MEDIUM:
+                case CoinSize.MEDIUM:
                     return new Nickel();
-                case CoinPhysicalProperties.SizeAndWeight.LARGE:
+                case CoinSize.LARGE:
                     return new Quarter();
-                case CoinPhysicalProperties.SizeAndWeight.UNKNOWN:
                 default:
                     break;
             }

@@ -28,18 +28,18 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreSame(expectedCoinReturn, coinAccepter.CoinReturn);
         }
 
-        [TestCase(CoinPhysicalProperties.SizeAndWeight.UNKNOWN)]
-        [TestCase(CoinPhysicalProperties.SizeAndWeight.SMALL)]
-        [TestCase(CoinPhysicalProperties.SizeAndWeight.MEDIUM)]
-        [TestCase(CoinPhysicalProperties.SizeAndWeight.LARGE)]
-        public void TestAcceptCallsBuildOnCoinFactoryWithSizeAndWeightPassed(CoinPhysicalProperties.SizeAndWeight expectedCoinSizeAndWeight)
+        [TestCase(CoinSize.TINY)]
+        [TestCase(CoinSize.SMALL)]
+        [TestCase(CoinSize.MEDIUM)]
+        [TestCase(CoinSize.LARGE)]
+        public void TestAcceptCallsBuildOnCoinFactoryWithSizeAndWeightPassed(CoinSize coinSize)
         {
             MockCoinFactory mockCoinFactory = new MockCoinFactory();
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, new MockCoinPurse(), new MockCoinReturn());
-            coinAccepter.Accept(expectedCoinSizeAndWeight);
+            coinAccepter.Accept(coinSize);
 
             Assert.AreEqual(1, mockCoinFactory.NumberOfTimesBuildCoinCalled);
-            Assert.AreEqual(expectedCoinSizeAndWeight, mockCoinFactory.LastSizeAndWeightPassed);
+            Assert.AreEqual(coinSize, mockCoinFactory.LastSizeAndWeightPassed);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             mockCoinFactory.CoinToReturn = expectedCoin;
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, new MockCoinReturn());
-            coinAccepter.Accept(CoinPhysicalProperties.SizeAndWeight.UNKNOWN);
+            coinAccepter.Accept(CoinSize.TINY);
 
             Assert.AreEqual(1, mockCoinPurse.NumberOfTimesAddCoinWasCalled);
             Assert.AreEqual(1, mockCoinPurse.CoinsPassedToAddCoin.Count);
@@ -70,25 +70,27 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, new MockCoinReturn());
-            decimal actualAmountReturned = coinAccepter.Accept(CoinPhysicalProperties.SizeAndWeight.UNKNOWN);
+            decimal actualAmountReturned = coinAccepter.Accept(CoinSize.TINY);
 
             Assert.AreEqual(1, mockCoinPurse.NumberOfTimesAmountAvailableWasCalled);
             Assert.AreEqual(expectedAmount, actualAmountReturned);
         }
 
-        [Test]
-        public void TestCoinWithNoValueIsPutIntoTheCoinReturnAndNotTheCoinPurse()
+        [TestCase(0)]
+        [TestCase(0.01)]
+        [TestCase(0.04)]
+        public void TestCoinWithNoValueIsPutIntoTheCoinReturnAndNotTheCoinPurse(decimal coinValue)
         {
             MockCoinFactory mockCoinFactory = new MockCoinFactory();
             MockCoinPurse mockCoinPurse = new MockCoinPurse();
             MockCoinReturn mockCoinReturn = new MockCoinReturn();
 
-            MockCoin mockCoin = new MockCoin {ValueToReturn = 0};
+            MockCoin mockCoin = new MockCoin {ValueToReturn = coinValue };
             mockCoinFactory.CoinToReturn = mockCoin;
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, mockCoinReturn);
 
-            decimal amountAvailable = coinAccepter.Accept(CoinPhysicalProperties.SizeAndWeight.SMALL);
+            decimal amountAvailable = coinAccepter.Accept(CoinSize.LARGE);
 
             Assert.AreSame(mockCoin, mockCoinReturn.CoinsPassedToAddCoin[0]);
             Assert.AreEqual(1, mockCoinReturn.NumberOfTimesAddCoinCalled);
