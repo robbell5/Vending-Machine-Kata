@@ -47,7 +47,7 @@ namespace Vending_Machine_Kata_Tests.Display
             TextBox displayTextBox = new TextBox();
             DisplayController displayController = new DisplayController(displayTextBox, new MockCoinPurse());
 
-            Assert.True(displayTextBox.Multiline);
+            Assert.False(displayTextBox.Multiline);
         }
 
         [Test]
@@ -56,10 +56,25 @@ namespace Vending_Machine_Kata_Tests.Display
             TextBox displayTextBox = new TextBox();
             new DisplayController(displayTextBox, new MockCoinPurse());
 
-            string expectedText = "INSERT COINS" + Environment.NewLine;
+            string expectedText = "INSERT COINS";
 
             Assert.AreEqual(expectedText, displayTextBox.Text);
         }
 
+        [TestCase(2.00, "$2.00")]
+        [TestCase(0.05, "$0.05")]
+        [TestCase(1000.15, "$1,000.15")]
+        [TestCase(0.99, "$0.99")]
+        public void TestSetsCurrentPurseValueFormatedLikeMoneyWhenCoinPurseNotifiesAmountHasChanged( decimal purseValue, string expectedDisplayText)
+        {
+            TextBox displayTextBox = new TextBox();
+            MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = purseValue };
+
+            DisplayController displayController = new DisplayController(displayTextBox, mockCoinPurse);
+
+            displayController.CoinPurseUpdated();
+
+            Assert.AreEqual(expectedDisplayText, displayTextBox.Text);
+        }
     }
 }

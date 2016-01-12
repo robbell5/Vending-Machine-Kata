@@ -16,22 +16,22 @@ namespace Vending_Machine_Kata.Display
             Display = displayTextBox;
             CoinPurse = coinPurse;
             CoinPurse.RegisterObserver(this);
-            FormatDisplay();
-        }
-
-        private void FormatDisplay()
-        {
-            Display.Multiline = true;
             DisplayMessage(IntialMessage);
         }
 
         private void DisplayMessage(string message)
         {
-            Display.Text = message + Environment.NewLine;
+            Display.Text = message;
         }
 
         public void CoinPurseUpdated()
         {
+            DisplayMessage(FormatValueToMoney(CoinPurse.AmountAvailable()));
+        }
+
+        private static string FormatValueToMoney(decimal value)
+        {
+            return $"{value:C}";
         }
     }
 }
