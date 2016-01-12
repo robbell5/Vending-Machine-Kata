@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
@@ -12,41 +13,16 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
            Assert.IsInstanceOf(typeof(ICoinFactory), new CoinFactory());
         }
 
-
-        [Test]
-        public void TestBuildsDimeFromSmallCoin()
+        [TestCase(typeof(Dime), CoinPhysicalProperties.SizeAndWeight.SMALL)]
+        [TestCase(typeof(Nickel), CoinPhysicalProperties.SizeAndWeight.MEDIUM)]
+        [TestCase(typeof(Quarter), CoinPhysicalProperties.SizeAndWeight.LARGE)]
+        [TestCase(typeof(NullCoin), CoinPhysicalProperties.SizeAndWeight.UNKNOWN)]
+        public void TestBuildsCorrectCoinForGivenSizeAndWeight(Type expectedType, CoinPhysicalProperties.SizeAndWeight coinSizeAndWeight)
         {
             CoinFactory coinFactory = new CoinFactory();
-            ICoin coin = coinFactory.BuildCoin(CoinPhysicalProperties.SizeAndWeight.SMALL);
+            ICoin coin = coinFactory.BuildCoin(coinSizeAndWeight);
 
-            Assert.IsInstanceOf(typeof(Dime), coin);
-        }
-
-        [Test]
-        public void TestBuildsNickleFromMediumCoin()
-        {
-            CoinFactory coinFactory = new CoinFactory();
-            ICoin coin = coinFactory.BuildCoin(CoinPhysicalProperties.SizeAndWeight.MEDIUM);
-
-            Assert.IsInstanceOf(typeof(Nickel), coin);
-        }
-
-        [Test]
-        public void TestBuildsQuarterFromLargeCoin()
-        {
-            CoinFactory coinFactory = new CoinFactory();
-            ICoin coin = coinFactory.BuildCoin(CoinPhysicalProperties.SizeAndWeight.LARGE);
-
-            Assert.IsInstanceOf(typeof(Quarter), coin);
-        }
-
-        [Test]
-        public void TestBuildsNullCoinFromUnknownCoin()
-        {
-            CoinFactory coinFactory = new CoinFactory();
-            ICoin coin = coinFactory.BuildCoin(CoinPhysicalProperties.SizeAndWeight.UNKNOWN);
-
-            Assert.IsInstanceOf(typeof(NullCoin), coin);
+            Assert.IsInstanceOf(expectedType, coin);
         }
     }
 }

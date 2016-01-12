@@ -1,4 +1,6 @@
-﻿namespace Vending_Machine_Kata.MonetaryMechanism.Coin
+﻿using System;
+
+namespace Vending_Machine_Kata.MonetaryMechanism.Coin
 {
     public class CoinFactory : ICoinFactory
     {
@@ -11,8 +13,11 @@
                 case CoinPhysicalProperties.SizeAndWeight.MEDIUM:
                     return new Nickel();
                 case CoinPhysicalProperties.SizeAndWeight.LARGE:
-                    return  new Quarter();
-            } 
+                    return new Quarter();
+                case CoinPhysicalProperties.SizeAndWeight.UNKNOWN:
+                default:
+                    break;
+            }
 
             return new NullCoin();
         }
