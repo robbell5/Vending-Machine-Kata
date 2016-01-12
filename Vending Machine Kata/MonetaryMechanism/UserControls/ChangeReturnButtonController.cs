@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
 {
@@ -13,6 +14,13 @@ namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
             Button = changeReturnButton;
             CoinPurse = coinPurse;
             CoinReturn = coinReturn;
+
+            Button.Click += ButtonEventListener;
+        }
+
+        private void ButtonEventListener(object sender, EventArgs eventArgs)
+        {
+            CoinPurse.Clear();
         }
     }
 }

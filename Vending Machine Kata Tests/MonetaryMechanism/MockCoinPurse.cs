@@ -15,6 +15,8 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public int NumberOfTimesAddCoinWasCalled { private set; get; }
         public int NumberOfTimesAmountAvailableWasCalled { private set; get; }
         public List<ICoinPurseObserver> RegisteredCoinPurseObservers { private set; get; }
+        public List<ICoin> Coins { get; }
+        public int NumberOfTimesClearWasCalled { get; set; }
         public int NumberOfTimesRegisterObserverWasCalled { get; set; }
 
         public MockCoinPurse()
@@ -26,6 +28,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             NumberOfTimesAddCoinWasCalled = 0;
             NumberOfTimesAmountAvailableWasCalled = 0;
             NumberOfTimesRegisterObserverWasCalled = 0;
+            NumberOfTimesClearWasCalled = 0;
         }
 
         public void AddCoin(ICoin coin)
@@ -41,8 +44,6 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             return AmountAvailableToReturn;
         }
 
-        public List<ICoin> Coins { get; }
-
         public void RegisterObserver(ICoinPurseObserver coinPurseObserver)
         {
             NumberOfTimesRegisterObserverWasCalled++;
@@ -51,6 +52,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
         public List<ICoin> Clear()
         {
+            NumberOfTimesClearWasCalled++;
             return null;
         }
     }
