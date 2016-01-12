@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using NUnit.Framework;
 using Vending_Machine_Kata.Display;
 
@@ -23,12 +24,24 @@ namespace Vending_Machine_Kata_Tests.Display
         }
 
         [Test]
-        public void TestConstructorSetsTextBoxToMultiline()
+        public void TestSetsTextBoxToMultiline()
         {
             TextBox displayTextBox = new TextBox();
             DisplayController displayController = new DisplayController(displayTextBox);
 
             Assert.True(displayTextBox.Multiline);
         }
+
+        [Test]
+        public void TestSetsFirstMessageOnDisplayTextBox()
+        {
+            TextBox displayTextBox = new TextBox();
+            new DisplayController(displayTextBox);
+
+            string expectedText = "INSERT COINS" + Environment.NewLine;
+
+            Assert.AreEqual(expectedText, displayTextBox.Text);
+        }
+
     }
 }
