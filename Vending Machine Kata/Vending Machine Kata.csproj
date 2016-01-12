@@ -50,6 +50,7 @@
     <Compile Include="MonetaryMechanism\CoinPurse.cs" />
     <Compile Include="MonetaryMechanism\CoinReturn.cs" />
     <Compile Include="MonetaryMechanism\Coin\CoinFactory.cs" />
+    <Compile Include="MonetaryMechanism\Coin\CoinSize.cs" />
     <Compile Include="MonetaryMechanism\Coin\Dime.cs" />
     <Compile Include="MonetaryMechanism\Coin\ICoinFactory.cs" />
     <Compile Include="MonetaryMechanism\Coin\CoinPhysicalProperties.cs" />
