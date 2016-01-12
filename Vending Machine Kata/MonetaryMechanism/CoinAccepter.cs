@@ -7,17 +7,24 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     {
         public ICoinFactory CoinFactory { get; }
         public ICoinPurse CoinPurse { get; }
+        public ICoinReturn CoinReturn { get; }
 
-        public CoinAccepter(ICoinFactory coinFactory, ICoinPurse coinPurse)
+        public CoinAccepter(ICoinFactory coinFactory, ICoinPurse coinPurse, ICoinReturn coinReturn)
         {
             CoinFactory = coinFactory;
             CoinPurse = coinPurse;
+            CoinReturn = coinReturn;
         }
 
         public decimal Accept(CoinPhysicalProperties.SizeAndWeight coinSizeAndWeight)
         {
             ICoin receivedCoin = CoinFactory.BuildCoin(coinSizeAndWeight);
-            CoinPurse.AddCoin(receivedCoin);
+
+            if (receivedCoin.Value > 0)
+                CoinPurse.AddCoin(receivedCoin);
+            else
+                CoinReturn.AddCoin(receivedCoin);
+
             return CoinPurse.AmountAvailable();
         }
     }
