@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
+using Vending_Machine_Kata.MonetaryMechanism;
 
 namespace Vending_Machine_Kata.Display
 {
     public class DisplayController : IDisplayController
     {
         public TextBox Display { get; }
+        public ICoinPurse CoinPurse { get; }
 
         private const string IntialMessage = "INSERT COINS";
 
-        public DisplayController(TextBox displayTextBox)
+        public DisplayController(TextBox displayTextBox, ICoinPurse coinPurse)
         {
             Display = displayTextBox;
+            CoinPurse = coinPurse;
             FormatDisplay();
         }
 
