@@ -13,6 +13,12 @@ namespace Vending_Machine_Kata_Tests.UserControls
     public class InsertCoinButtonPanelTest
     {
         [Test]
+        public void TestImplementsInterface()
+        {
+            Assert.IsInstanceOf(typeof(IInserCoinButtonPanel), new InsertCoinButtonPanel(null,null,null,null));    
+        }
+
+        [Test]
         public void TestProperties()
         {
             Button expectedInsertPennyButton = new Button();
