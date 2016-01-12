@@ -61,12 +61,6 @@
     <Compile Include="MonetaryMechanism\Coin\Penny.cs" />
     <Compile Include="MonetaryMechanism\Coin\Quarter.cs" />
     <Compile Include="MonetaryMechanism\ICoinAccepter.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="MonetaryMechanism\ICoinPurse.cs" />
     <Compile Include="MonetaryMechanism\ICoinPurseObserver.cs" />
     <Compile Include="MonetaryMechanism\ICoinReturn.cs" />
