@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using NUnit.Framework;
 using Vending_Machine_Kata.Display;
+using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata_Tests.MonetaryMechanism;
 
 namespace Vending_Machine_Kata_Tests.Display
@@ -12,7 +13,10 @@ namespace Vending_Machine_Kata_Tests.Display
         [Test]
         public void TestImplementsInterface()
         {
-            Assert.IsInstanceOf(typeof(IDisplayController), new DisplayController(new TextBox(), null));
+            DisplayController displayController = new DisplayController(new TextBox(), null);
+
+            Assert.IsInstanceOf(typeof(IDisplayController), displayController);
+            Assert.IsInstanceOf(typeof(ICoinPurseObserver), displayController);
         }
 
         [Test]

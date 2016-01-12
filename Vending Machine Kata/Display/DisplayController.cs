@@ -4,7 +4,7 @@ using Vending_Machine_Kata.MonetaryMechanism;
 
 namespace Vending_Machine_Kata.Display
 {
-    public class DisplayController : IDisplayController
+    public class DisplayController : IDisplayController, ICoinPurseObserver
     {
         public TextBox Display { get; }
         public ICoinPurse CoinPurse { get; }
@@ -27,6 +27,10 @@ namespace Vending_Machine_Kata.Display
         private void DisplayMessage(string message)
         {
             Display.Text = message + Environment.NewLine;
+        }
+
+        public void CoinPurseUpdated()
+        {
         }
     }
 }
