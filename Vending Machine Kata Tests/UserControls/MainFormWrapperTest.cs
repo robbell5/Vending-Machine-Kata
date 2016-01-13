@@ -20,5 +20,14 @@ namespace Vending_Machine_Kata_Tests.UserControls
 
             Assert.AreSame(expectedForm, mainFormWrapper.MainForm);
         }
+
+        [Test]
+        public void TestBuildsInsertCoinButtonPanel()
+        {
+            Form mainForm = new Form();
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
+
+            Assert.IsInstanceOf(typeof(IInsertCoinButtonPanel), mainFormWrapper.InsertCoinButtonPanel);
+        }
     }
 }
