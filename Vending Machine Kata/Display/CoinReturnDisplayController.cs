@@ -14,21 +14,22 @@ namespace Vending_Machine_Kata.Display
             CoinReturn = coinReturn;
             CoinReturn.RegisterObserver(this);
 
-            DisplayMessage(FormatValueToMoney(CoinReturn.AmountAvailable));
+            UpdateDisplayWithCoinReturnValue();
         }
 
         public void CoinReturnUpdated()
         {
-        }
-
-        private void DisplayMessage(string message)
-        {
-            Display.Text = message;
+            UpdateDisplayWithCoinReturnValue();
         }
 
         private static string FormatValueToMoney(decimal value)
         {
             return $"{value:C}";
+        }
+
+        private void UpdateDisplayWithCoinReturnValue()
+        {
+            Display.Text = FormatValueToMoney(CoinReturn.AmountAvailable);
         }
     }
 }
