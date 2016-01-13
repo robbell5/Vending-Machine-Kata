@@ -52,5 +52,19 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
             Assert.AreEqual(CoinSize.MEDIUM, mockCoinAccepter.LastCoinSizePassedToAccept);
         }
+
+        [Test]
+        public void TestClickingTheInsertDimeButtonPassesAMediumCoinToTheCoinAccepter()
+        {
+            MockInsertCoinButtonPanel mockInsertCoinButtonPanel = new MockInsertCoinButtonPanel();
+            MockCoinAccepter mockCoinAccepter = new MockCoinAccepter();
+
+            new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
+
+            mockInsertCoinButtonPanel.InsertDimeButton.PerformClick();
+
+            Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
+            Assert.AreEqual(CoinSize.TINY, mockCoinAccepter.LastCoinSizePassedToAccept);
+        }
     }
 }

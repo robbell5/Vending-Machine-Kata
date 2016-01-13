@@ -17,6 +17,7 @@ namespace Vending_Machine_Kata.UserControls
 
             InsertCoinButtonPanel.InsertPennyButton.Click += InsertPennyButtonEventListener;
             InsertCoinButtonPanel.InsertNickelButton.Click += InsertNickelButtonEventListener;
+            InsertCoinButtonPanel.InsertDimeButton.Click += InsertDimeButtonEventListener;
         }
 
         private void InsertPennyButtonEventListener(object sender, EventArgs eventArgs)
@@ -27,6 +28,11 @@ namespace Vending_Machine_Kata.UserControls
         private void InsertNickelButtonEventListener(object sender, EventArgs eventArgs)
         {
             CoinAccepter.Accept(CoinSize.MEDIUM);
+        }
+
+        private void InsertDimeButtonEventListener(object sender, EventArgs eventArgs)
+        {
+            CoinAccepter.Accept(CoinSize.TINY);
         }
     }
 }
