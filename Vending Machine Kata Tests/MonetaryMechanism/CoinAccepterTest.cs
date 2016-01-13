@@ -59,23 +59,6 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreEqual(expectedCoin, mockCoinPurse.CoinsPassedToAddCoin[0]);
         }
 
-        [TestCase(12.45)]
-        [TestCase(445.1)]
-        [TestCase(98.322)]
-        [TestCase(0)]
-        public void TestAcceptReturnsAmountAvailableFromCoinPurse(decimal expectedAmount)
-        {
-            MockCoinFactory mockCoinFactory = new MockCoinFactory();
-            MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = expectedAmount};
-
-
-            CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, new MockCoinReturn());
-            decimal actualAmountReturned = coinAccepter.Accept(CoinSize.TINY);
-
-            Assert.AreEqual(1, mockCoinPurse.NumberOfTimesAmountAvailableWasCalled);
-            Assert.AreEqual(expectedAmount, actualAmountReturned);
-        }
-
         [TestCase(0)]
         [TestCase(0.01)]
         [TestCase(0.04)]
@@ -90,11 +73,10 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, mockCoinReturn);
 
-            decimal amountAvailable = coinAccepter.Accept(CoinSize.LARGE);
+            coinAccepter.Accept(CoinSize.LARGE);
 
             Assert.AreSame(mockCoin, mockCoinReturn.CoinsPassedToAddCoin[0]);
             Assert.AreEqual(1, mockCoinReturn.NumberOfTimesAddCoinCalled);
-            Assert.AreEqual(0, amountAvailable);
             Assert.AreEqual(0, mockCoinPurse.NumberOfTimesAddCoinWasCalled);
             Assert.AreEqual(0, mockCoinPurse.Coins.Count);
         }

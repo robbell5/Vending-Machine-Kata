@@ -15,11 +15,10 @@ namespace Vending_Machine_Kata_Tests.UserControls
             NumberOfTimeAcceptWasCalled = 0;
         }
 
-        public decimal Accept(CoinSize coinSize)
+        public void Accept(CoinSize coinSize)
         {
             NumberOfTimeAcceptWasCalled++;
             LastCoinSizePassedToAccept = coinSize;
-            return 0;
         }
     }
 }

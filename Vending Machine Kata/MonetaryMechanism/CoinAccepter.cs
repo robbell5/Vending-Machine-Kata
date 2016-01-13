@@ -16,7 +16,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
             CoinReturn = coinReturn;
         }
 
-        public decimal Accept(CoinSize coinSize)
+        public void Accept(CoinSize coinSize)
         {
             ICoin receivedCoin = CoinFactory.BuildCoin(coinSize);
 
@@ -26,8 +26,6 @@ namespace Vending_Machine_Kata.MonetaryMechanism
                 CoinPurse.AddCoin(receivedCoin);
             else
                 CoinReturn.AddCoin(receivedCoin);
-
-            return CoinPurse.AmountAvailable();
         }
     }
 }
