@@ -6,6 +6,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     {
         ICoinFactory CoinFactory { get; }
         ICoinPurse CoinPurse { get; }
+        ICoinReturn CoinReturn { get; }
         void Accept(CoinSize coinSize);
     }
 }

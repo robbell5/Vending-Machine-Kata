@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NUnit.Framework;
 using Vending_Machine_Kata.MonetaryMechanism;
+using Vending_Machine_Kata.MonetaryMechanism.Coin;
 using Vending_Machine_Kata.UserControls;
 
 namespace Vending_Machine_Kata_Tests.UserControls
@@ -74,6 +75,29 @@ namespace Vending_Machine_Kata_Tests.UserControls
             ICoinReturn coinPurse = mainFormWrapper.CoinReturn;
 
             Assert.IsInstanceOf(typeof(ICoinReturn), coinPurse);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsCoinFactory()
+        {
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+
+            ICoinFactory coinFactory = mainFormWrapper.CoinFactory;
+
+            Assert.IsInstanceOf(typeof(ICoinFactory), coinFactory);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsCoinAccepter()
+        {
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+
+            ICoinAccepter coinAccepter = mainFormWrapper.CoinAccepter;
+
+            Assert.IsInstanceOf(typeof(ICoinAccepter), coinAccepter);
+            Assert.AreSame(mainFormWrapper.CoinFactory, coinAccepter.CoinFactory);
+            Assert.AreSame(mainFormWrapper.CoinPurse, coinAccepter.CoinPurse);
+            Assert.AreSame(mainFormWrapper.CoinReturn, coinAccepter.CoinReturn);
         }
     }
 }
