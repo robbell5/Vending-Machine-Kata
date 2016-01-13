@@ -140,5 +140,36 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreEqual(1, mockCoinReturnObserverOne.NumberOfTimesCoinPurseUpdatedCalled);
             Assert.AreEqual(1, mockCoinReturnObserverTwo.NumberOfTimesCoinPurseUpdatedCalled);
         }
+
+        [Test]
+        public void TestAmoutAvaibleReturnsValueOfAllCoinsInTheReturn()
+        {
+            CoinReturn coinReturn = new CoinReturn();
+
+            decimal expectedValue = 4.00m;
+            MockCoin mockCoinOne = new MockCoin() { ValueToReturn = expectedValue};
+
+            coinReturn.AddCoin(mockCoinOne);
+
+            Assert.AreEqual(expectedValue, coinReturn.AmountAvailable);
+        }
+
+        [Test]
+        public void TestAmoutAvaibleReturnsValueOfAllCoinsInTheReturnMulitpleCoins()
+        {
+            CoinReturn coinReturn = new CoinReturn();
+
+            MockCoin mockCoinOne = new MockCoin() {ValueToReturn = 1.00m};
+            MockCoin mockCoinTwo = new MockCoin() {ValueToReturn = 99.28m};
+            MockCoin mockCoinThree = new MockCoin() {ValueToReturn = 123.123m};
+
+            decimal expectedValue = mockCoinOne.ValueToReturn + mockCoinTwo.ValueToReturn + mockCoinThree.ValueToReturn;
+
+            coinReturn.AddCoin(mockCoinOne);
+            coinReturn.AddCoin(mockCoinTwo);
+            coinReturn.AddCoin(mockCoinThree);
+
+            Assert.AreEqual(expectedValue, coinReturn.AmountAvailable);
+        }
     }
 }

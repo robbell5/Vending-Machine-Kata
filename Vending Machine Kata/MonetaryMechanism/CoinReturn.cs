@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.MonetaryMechanism
@@ -7,6 +8,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     {
         public List<ICoin> Coins { get; private set; }
         public List<ICoinReturnObserver> Observers { get; private set; }
+        public decimal AmountAvailable { get { return Coins.Sum(coin => coin.Value); } }
 
         public CoinReturn()
         {
