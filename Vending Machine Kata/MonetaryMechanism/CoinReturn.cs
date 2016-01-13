@@ -17,6 +17,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
         public void AddCoin(ICoin coin)
         {
             Coins.Add(coin);
+            NotifyObservers();
         }
 
         public List<ICoin> Clear()
@@ -31,6 +32,11 @@ namespace Vending_Machine_Kata.MonetaryMechanism
         public void RegisterObserver(ICoinReturnObserver coinReturnObserver)
         {
             Observers.Add(coinReturnObserver);
+        }
+
+        private void NotifyObservers()
+        {
+            Observers.ForEach(observer => observer.CoinReturnUpdated());
         }
     }
 }

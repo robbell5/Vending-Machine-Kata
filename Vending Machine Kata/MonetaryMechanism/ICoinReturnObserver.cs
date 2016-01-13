@@ -2,6 +2,6 @@
 {
     public interface ICoinReturnObserver
     {
-        void CoinPurseUpdated();
+        void CoinReturnUpdated();
     }
 }

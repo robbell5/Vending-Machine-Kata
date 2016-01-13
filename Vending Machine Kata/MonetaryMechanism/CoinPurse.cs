@@ -33,10 +33,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
 
         private void NotifyObservers()
         {
-            foreach (ICoinPurseObserver coinPurseObserver in Observers)
-            {
-                coinPurseObserver.CoinPurseUpdated();
-            }
+            Observers.ForEach(observer => observer.CoinPurseUpdated());
         }
 
         public List<ICoin> Clear()

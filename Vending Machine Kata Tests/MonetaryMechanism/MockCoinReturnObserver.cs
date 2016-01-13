@@ -6,7 +6,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
     {
         public int NumberOfTimesCoinPurseUpdatedCalled { private set; get; }
 
-        public void CoinPurseUpdated()
+        public void CoinReturnUpdated()
         {
             NumberOfTimesCoinPurseUpdatedCalled++;
         }
