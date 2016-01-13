@@ -8,24 +8,24 @@ using Vending_Machine_Kata.UserControls;
 namespace Vending_Machine_Kata_Tests.UserControls
 {
     [TestFixture]
-    public class MainFormWrapperTest
+    public class MainFormControllerTest
     {
         [Test]
         public void TestBaseProperties()
         {
             Form expectedForm = new Form();
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(expectedForm);
+            MainFormController mainFormController = new MainFormController(expectedForm);
 
-            Assert.AreSame(expectedForm, mainFormWrapper.MainForm);
+            Assert.AreSame(expectedForm, mainFormController.MainForm);
         }
 
         [Test]
         public void TestBuildsInsertCoinButtonPanel()
         {
             Form mainForm = new Form();
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
+            MainFormController mainFormController = new MainFormController(mainForm);
 
-            Assert.IsInstanceOf(typeof(IInsertCoinButtonPanel), mainFormWrapper.InsertCoinButtonPanel);
+            Assert.IsInstanceOf(typeof(IInsertCoinButtonPanel), mainFormController.InsertCoinButtonPanel);
         }
 
         [Test]
@@ -43,9 +43,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
             mainForm.Controls.Add(expectedInsertDimeButton);
             mainForm.Controls.Add(expectedInsertQuaterButton);
 
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
+            MainFormController mainFormController = new MainFormController(mainForm);
 
-            IInsertCoinButtonPanel insertCoinButtonPanel = mainFormWrapper.InsertCoinButtonPanel;
+            IInsertCoinButtonPanel insertCoinButtonPanel = mainFormController.InsertCoinButtonPanel;
 
             Assert.AreSame(expectedInsertPennyButton, insertCoinButtonPanel.InsertPennyButton);
             Assert.AreSame(expectedInsertNickelButton, insertCoinButtonPanel.InsertNickelButton);
@@ -56,9 +56,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
         [Test]
         public void TestCorrectlyBuildsCoinPurse()
         {
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+            MainFormController mainFormController = new MainFormController(new Form());
 
-            ICoinPurse coinPurse = mainFormWrapper.CoinPurse;
+            ICoinPurse coinPurse = mainFormController.CoinPurse;
 
             Assert.IsInstanceOf(typeof(ICoinPurse), coinPurse);
         }
@@ -66,9 +66,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
         [Test]
         public void TestCorrectlyBuildsCoinReturn()
         {
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+            MainFormController mainFormController = new MainFormController(new Form());
 
-            ICoinReturn coinPurse = mainFormWrapper.CoinReturn;
+            ICoinReturn coinPurse = mainFormController.CoinReturn;
 
             Assert.IsInstanceOf(typeof(ICoinReturn), coinPurse);
         }
@@ -76,9 +76,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
         [Test]
         public void TestCorrectlyBuildsCoinFactory()
         {
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+            MainFormController mainFormController = new MainFormController(new Form());
 
-            ICoinFactory coinFactory = mainFormWrapper.CoinFactory;
+            ICoinFactory coinFactory = mainFormController.CoinFactory;
 
             Assert.IsInstanceOf(typeof(ICoinFactory), coinFactory);
         }
@@ -86,14 +86,14 @@ namespace Vending_Machine_Kata_Tests.UserControls
         [Test]
         public void TestCorrectlyBuildsCoinAccepter()
         {
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+            MainFormController mainFormController = new MainFormController(new Form());
 
-            ICoinAccepter coinAccepter = mainFormWrapper.CoinAccepter;
+            ICoinAccepter coinAccepter = mainFormController.CoinAccepter;
 
             Assert.IsInstanceOf(typeof(ICoinAccepter), coinAccepter);
-            Assert.AreSame(mainFormWrapper.CoinFactory, coinAccepter.CoinFactory);
-            Assert.AreSame(mainFormWrapper.CoinPurse, coinAccepter.CoinPurse);
-            Assert.AreSame(mainFormWrapper.CoinReturn, coinAccepter.CoinReturn);
+            Assert.AreSame(mainFormController.CoinFactory, coinAccepter.CoinFactory);
+            Assert.AreSame(mainFormController.CoinPurse, coinAccepter.CoinPurse);
+            Assert.AreSame(mainFormController.CoinReturn, coinAccepter.CoinReturn);
         }
 
         [Test]
@@ -104,13 +104,13 @@ namespace Vending_Machine_Kata_Tests.UserControls
             expectedDisplayTextBox.Name = "DisplayTextBox";
             mainForm.Controls.Add(expectedDisplayTextBox);
 
-            MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
+            MainFormController mainFormController = new MainFormController(mainForm);
 
-            DisplayController displayController = mainFormWrapper.DisplayController;
+            DisplayController displayController = mainFormController.DisplayController;
 
             Assert.IsInstanceOf(typeof(DisplayController), displayController);
             Assert.AreSame(expectedDisplayTextBox, displayController.Display);
-            Assert.AreSame(mainFormWrapper.CoinPurse, displayController.CoinPurse);
+            Assert.AreSame(mainFormController.CoinPurse, displayController.CoinPurse);
         }
     }
 }

@@ -70,7 +70,7 @@
     <Compile Include="UserControls\IInsertCoinButtonPanel.cs" />
     <Compile Include="UserControls\InsertCoinButtonPanel.cs" />
     <Compile Include="UserControls\InsertCoinButtonPanelController.cs" />
-    <Compile Include="UserControls\MainFormWrapper.cs" />
+    <Compile Include="UserControls\MainFormController.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

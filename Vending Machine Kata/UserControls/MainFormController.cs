@@ -6,7 +6,7 @@ using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.UserControls
 {
-    public class MainFormWrapper
+    public class MainFormController
     {
         public Form MainForm { get; }
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
@@ -16,7 +16,7 @@ namespace Vending_Machine_Kata.UserControls
         public ICoinFactory CoinFactory { get; set; }
         public DisplayController DisplayController { get; set; }
 
-        public MainFormWrapper(Form form)
+        public MainFormController(Form form)
         {
             MainForm = form;
 
