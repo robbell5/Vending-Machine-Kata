@@ -11,6 +11,7 @@ namespace Vending_Machine_Kata.Display
         public CoinReturnDisplayController(ICoinReturn coinReturn)
         {
             CoinReturn = coinReturn;
+            CoinReturn.RegisterObserver(this);
         }
 
         public void CoinReturnUpdated()

@@ -8,5 +8,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
         void AddCoin(ICoin coin);
         List<ICoin> Clear();
         List<ICoin> Coins { get; }
+        List<ICoinReturnObserver> Observers { get; }
+        void RegisterObserver(ICoinReturnObserver coinReturnObserver);
     }
 }

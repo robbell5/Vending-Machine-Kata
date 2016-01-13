@@ -10,11 +10,22 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public int NumberOfTimesAddCoinCalled { get; set; }
         public List<ICoin> CoinsPassedToAddCoin { get; set; }
         public List<ICoin> Coins { get; }
+        public List<ICoinReturnObserver> Observers { get; }
+        public List<ICoinReturnObserver> ObserversPassedToRegisterObserver { get; }
+        public int NumberOfTimesRegisterObserverWasCalled { get; private set; }
+
+        public void RegisterObserver(ICoinReturnObserver coinReturnObserver)
+        {
+            ObserversPassedToRegisterObserver.Add(coinReturnObserver);
+            NumberOfTimesRegisterObserverWasCalled++;
+        }
 
         public MockCoinReturn()
         {
+            NumberOfTimesRegisterObserverWasCalled = 0;
             NumberOfTimesAddCoinCalled = 0;
             CoinsPassedToAddCoin = new List<ICoin>();
+            ObserversPassedToRegisterObserver = new List<ICoinReturnObserver>();
         }
 
         public void AddCoin(ICoin coin)
@@ -25,7 +36,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
         public List<ICoin> Clear()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

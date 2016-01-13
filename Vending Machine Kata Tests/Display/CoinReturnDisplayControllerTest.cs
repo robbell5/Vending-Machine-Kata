@@ -16,7 +16,7 @@ namespace Vending_Machine_Kata_Tests.Display
         [Test]
         public void TestImplementsInterface()
         {
-            CoinReturnDisplayController coinReturnDisplayController = new CoinReturnDisplayController(null);
+            CoinReturnDisplayController coinReturnDisplayController = new CoinReturnDisplayController(new MockCoinReturn());
             Assert.IsInstanceOf(typeof(IDisplayController), coinReturnDisplayController);
             Assert.IsInstanceOf(typeof(ICoinReturnObserver), coinReturnDisplayController);
         }
@@ -29,6 +29,16 @@ namespace Vending_Machine_Kata_Tests.Display
             CoinReturnDisplayController coinReturnDisplayController = new CoinReturnDisplayController(expectedCoinReturn);
 
             Assert.AreEqual(expectedCoinReturn, coinReturnDisplayController.CoinReturn);
+        }
+
+        [Test]
+        public void TestRegistersSelfAsObserverWithCoinReturn()
+        {
+            MockCoinReturn mockCoinReturn = new MockCoinReturn();
+            CoinReturnDisplayController coinReturnDisplayController = new CoinReturnDisplayController(mockCoinReturn);
+
+            Assert.AreEqual(1, mockCoinReturn.NumberOfTimesRegisterObserverWasCalled);
+            Assert.AreSame(coinReturnDisplayController, mockCoinReturn.ObserversPassedToRegisterObserver[0]);
         }
     }
 }
