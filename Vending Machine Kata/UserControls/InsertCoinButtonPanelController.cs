@@ -16,11 +16,17 @@ namespace Vending_Machine_Kata.UserControls
             CoinAccepter = coinAccepter;
 
             InsertCoinButtonPanel.InsertPennyButton.Click += InsertPennyButtonEventListener;
+            InsertCoinButtonPanel.InsertNickelButton.Click += InsertNickelButtonEventListener;
         }
 
         private void InsertPennyButtonEventListener(object sender, EventArgs eventArgs)
         {
             CoinAccepter.Accept(CoinSize.SMALL);
+        }
+
+        private void InsertNickelButtonEventListener(object sender, EventArgs eventArgs)
+        {
+            CoinAccepter.Accept(CoinSize.MEDIUM);
         }
     }
 }
