@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 
 namespace Vending_Machine_Kata.UserControls
 {
@@ -10,7 +11,18 @@ namespace Vending_Machine_Kata.UserControls
         public MainFormWrapper(Form form)
         {
             MainForm = form;
-            InsertCoinButtonPanel = new InsertCoinButtonPanel(null, null, null, null);
+            InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"), null, null, null);
+        }
+
+        private Button GetButtonFromForm(string controlName)
+        {
+            foreach (
+                Control control in
+                    MainForm.Controls.Cast<Control>()
+                        .Where(control => control.GetType() == typeof (Button) && control.Name == controlName))
+                return (Button) control;
+
+            return new Button();
         }
     }
 }
