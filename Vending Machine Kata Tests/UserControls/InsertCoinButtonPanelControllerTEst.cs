@@ -15,9 +15,13 @@ namespace Vending_Machine_Kata_Tests.UserControls
         public void TestProperties()
         {
             MockInsertCoinButtonPanel expectedInsertCoinButtonPanel = new MockInsertCoinButtonPanel();
-            InsertCoinButtonPanelController insertCoinButtonPanelController = new InsertCoinButtonPanelController(expectedInsertCoinButtonPanel);
+            MockCoinAccepter expectedCoinAccepter = new MockCoinAccepter();
+
+            InsertCoinButtonPanelController insertCoinButtonPanelController =
+                new InsertCoinButtonPanelController(expectedInsertCoinButtonPanel, expectedCoinAccepter);
 
             Assert.AreSame(expectedInsertCoinButtonPanel, insertCoinButtonPanelController.InsertCoinButtonPanel);
+            Assert.AreSame(expectedCoinAccepter, insertCoinButtonPanelController.CoinAccepter);
         }
     }
 }
