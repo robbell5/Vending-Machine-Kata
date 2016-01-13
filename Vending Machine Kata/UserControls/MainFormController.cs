@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
+using Vending_Machine_Kata.MonetaryMechanism.UserControls;
 
 namespace Vending_Machine_Kata.UserControls
 {
@@ -15,6 +16,7 @@ namespace Vending_Machine_Kata.UserControls
         public ICoinAccepter CoinAccepter { get; set; }
         public ICoinFactory CoinFactory { get; set; }
         public DisplayController DisplayController { get; set; }
+        public ChangeReturnButtonController ChangeReturnButtonController { get; set; }
 
         public MainFormController(Form form)
         {
@@ -27,6 +29,9 @@ namespace Vending_Machine_Kata.UserControls
             CoinAccepter = new CoinAccepter(CoinFactory, CoinPurse, CoinReturn);
 
             DisplayController = new DisplayController(GetTextBoxFromForm("DisplayTextBox"), CoinPurse);
+
+            ChangeReturnButtonController = new ChangeReturnButtonController(GetButtonFromForm("ChangeReturnButton"),
+                CoinPurse, CoinReturn);
 
             InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"),
                 GetButtonFromForm("InsertNickelButton"),

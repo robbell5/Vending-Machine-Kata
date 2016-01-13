@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
+using Vending_Machine_Kata.MonetaryMechanism.UserControls;
 using Vending_Machine_Kata.UserControls;
 
 namespace Vending_Machine_Kata_Tests.UserControls
@@ -111,6 +112,24 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.IsInstanceOf(typeof(DisplayController), displayController);
             Assert.AreSame(expectedDisplayTextBox, displayController.Display);
             Assert.AreSame(mainFormController.CoinPurse, displayController.CoinPurse);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsChangeReturnButtonController()
+        {
+            Form mainForm = new Form();
+            Button expectedChangeReturnButton = new Button() {Name = "ChangeReturnButton"};
+
+            mainForm.Controls.Add(expectedChangeReturnButton);
+            MainFormController mainFormController = new MainFormController(mainForm);
+
+            ChangeReturnButtonController changeReturnButtonController = mainFormController.ChangeReturnButtonController;
+
+            Assert.IsInstanceOf(typeof(ChangeReturnButtonController), changeReturnButtonController);
+            Assert.AreSame(expectedChangeReturnButton, changeReturnButtonController.Button);
+            Assert.AreSame(mainFormController.CoinPurse, changeReturnButtonController.CoinPurse);
+            Assert.AreSame(mainFormController.CoinReturn, changeReturnButtonController.CoinReturn);
+
         }
     }
 }
