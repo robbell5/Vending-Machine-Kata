@@ -31,18 +31,28 @@ namespace Vending_Machine_Kata_Tests.UserControls
         }
 
         [Test]
-        public void TestBuildsInsertCoinButtonPanelWithCorrectInsertPennyButton()
+        public void TestBuildsInsertCoinButtonPanelWithCorrectInsertCoinButtons()
         {
             Form mainForm = new Form();
+
             Button expectedInsertPennyButton = new Button {Name = "InsertPennyButton"};
+            Button expectedInsertNickelButton = new Button {Name = "InsertNickelButton"};
+            Button expectedInsertDimeButton = new Button {Name = "InsertDimeButton"};
+            Button expectedInsertQuaterButton = new Button {Name = "InsertQuarterButton"};
 
             mainForm.Controls.Add(expectedInsertPennyButton);
+            mainForm.Controls.Add(expectedInsertNickelButton);
+            mainForm.Controls.Add(expectedInsertDimeButton);
+            mainForm.Controls.Add(expectedInsertQuaterButton);
 
             MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
 
             IInsertCoinButtonPanel insertCoinButtonPanel = mainFormWrapper.InsertCoinButtonPanel;
 
             Assert.AreSame(expectedInsertPennyButton, insertCoinButtonPanel.InsertPennyButton);
+            Assert.AreSame(expectedInsertNickelButton, insertCoinButtonPanel.InsertNickelButton);
+            Assert.AreSame(expectedInsertDimeButton, insertCoinButtonPanel.InsertDimeButton);
+            Assert.AreSame(expectedInsertQuaterButton, insertCoinButtonPanel.InsertQuarterButton);
         }
     }
 }

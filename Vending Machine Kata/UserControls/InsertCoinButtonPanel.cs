@@ -9,7 +9,8 @@ namespace Vending_Machine_Kata.UserControls
         public Button InsertDimeButton { get; }
         public Button InsertQuarterButton { get; }
 
-        public InsertCoinButtonPanel(Button insertPennyButton, Button insertNickelButton, Button insertDimeButton, Button insertQuarterButton)
+        public InsertCoinButtonPanel(Button insertPennyButton, Button insertNickelButton, Button insertDimeButton,
+            Button insertQuarterButton)
         {
             InsertPennyButton = insertPennyButton;
             InsertNickelButton = insertNickelButton;

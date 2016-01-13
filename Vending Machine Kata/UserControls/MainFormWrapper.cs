@@ -11,7 +11,10 @@ namespace Vending_Machine_Kata.UserControls
         public MainFormWrapper(Form form)
         {
             MainForm = form;
-            InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"), null, null, null);
+            InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"),
+                GetButtonFromForm("InsertNickelButton"),
+                GetButtonFromForm("InsertDimeButton"),
+                GetButtonFromForm("InsertQuarterButton"));
         }
 
         private Button GetButtonFromForm(string controlName)
