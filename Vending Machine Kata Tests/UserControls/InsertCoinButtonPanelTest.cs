@@ -15,7 +15,7 @@ namespace Vending_Machine_Kata_Tests.UserControls
         [Test]
         public void TestImplementsInterface()
         {
-            Assert.IsInstanceOf(typeof(IInserCoinButtonPanel), new InsertCoinButtonPanel(null,null,null,null));    
+            Assert.IsInstanceOf(typeof(IInsertCoinButtonPanel), new InsertCoinButtonPanel(null,null,null,null));    
         }
 
         [Test]

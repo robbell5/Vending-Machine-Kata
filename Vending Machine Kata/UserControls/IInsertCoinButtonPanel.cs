@@ -2,7 +2,7 @@
 
 namespace Vending_Machine_Kata.UserControls
 {
-    public interface IInserCoinButtonPanel
+    public interface IInsertCoinButtonPanel
     {
         Button InsertPennyButton { get; }
         Button InsertNickelButton { get; }
