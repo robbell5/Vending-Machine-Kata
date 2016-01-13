@@ -129,7 +129,18 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.AreSame(expectedChangeReturnButton, changeReturnButtonController.Button);
             Assert.AreSame(mainFormController.CoinPurse, changeReturnButtonController.CoinPurse);
             Assert.AreSame(mainFormController.CoinReturn, changeReturnButtonController.CoinReturn);
+        }
 
+        [Test]
+        public void TestCorrectlyBuildsInsertCoinButtonPanelController()
+        {
+            MainFormController mainFormController = new MainFormController(new Form());
+
+            InsertCoinButtonPanelController insertCoinButtonPanelController = mainFormController.InsertCoinButtonPanelController;
+
+            Assert.IsInstanceOf(typeof(InsertCoinButtonPanelController), insertCoinButtonPanelController);
+            Assert.AreSame(mainFormController.CoinAccepter,insertCoinButtonPanelController.CoinAccepter);
+            Assert.AreSame(mainFormController.InsertCoinButtonPanel,insertCoinButtonPanelController.InsertCoinButtonPanel);
         }
     }
 }

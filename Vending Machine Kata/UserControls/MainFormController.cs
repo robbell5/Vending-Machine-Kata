@@ -13,10 +13,11 @@ namespace Vending_Machine_Kata.UserControls
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
         public ICoinPurse CoinPurse { get; }
         public ICoinReturn CoinReturn { get; }
-        public ICoinAccepter CoinAccepter { get; set; }
-        public ICoinFactory CoinFactory { get; set; }
-        public DisplayController DisplayController { get; set; }
-        public ChangeReturnButtonController ChangeReturnButtonController { get; set; }
+        public ICoinAccepter CoinAccepter { get; }
+        public ICoinFactory CoinFactory { get; }
+        public DisplayController DisplayController { get; }
+        public ChangeReturnButtonController ChangeReturnButtonController { get; }
+        public InsertCoinButtonPanelController InsertCoinButtonPanelController { get; }
 
         public MainFormController(Form form)
         {
@@ -37,6 +38,8 @@ namespace Vending_Machine_Kata.UserControls
                 GetButtonFromForm("InsertNickelButton"),
                 GetButtonFromForm("InsertDimeButton"),
                 GetButtonFromForm("InsertQuarterButton"));
+
+            InsertCoinButtonPanelController = new InsertCoinButtonPanelController(InsertCoinButtonPanel, CoinAccepter);
         }
 
         private Button GetButtonFromForm(string controlName)
