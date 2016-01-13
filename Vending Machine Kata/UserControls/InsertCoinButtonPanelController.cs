@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 

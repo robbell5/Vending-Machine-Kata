@@ -1,5 +1,4 @@
-﻿using System;
-using Vending_Machine_Kata.MonetaryMechanism.Coin;
+﻿using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.MonetaryMechanism
 {

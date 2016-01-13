@@ -7,10 +7,10 @@ namespace Vending_Machine_Kata.UserControls
 {
     public class MainFormWrapper
     {
-        public Form MainForm { get; private set; }
+        public Form MainForm { get; }
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
-        public ICoinPurse CoinPurse { get; private set; }
-        public ICoinReturn CoinReturn { get; private set; }
+        public ICoinPurse CoinPurse { get; }
+        public ICoinReturn CoinReturn { get; }
         public ICoinAccepter CoinAccepter { get; set; }
         public ICoinFactory CoinFactory { get; set; }
 

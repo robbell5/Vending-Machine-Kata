@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Vending_Machine_Kata.MonetaryMechanism;
 
 namespace Vending_Machine_Kata.Display

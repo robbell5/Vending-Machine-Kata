@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using NUnit.Framework;
 using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;

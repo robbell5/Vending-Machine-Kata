@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vending_Machine_Kata.MonetaryMechanism.Coin
+﻿namespace Vending_Machine_Kata.MonetaryMechanism.Coin
 {
     public class CoinFactory : ICoinFactory
     {
