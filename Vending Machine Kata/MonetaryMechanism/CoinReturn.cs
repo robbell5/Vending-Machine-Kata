@@ -26,6 +26,8 @@ namespace Vending_Machine_Kata.MonetaryMechanism
             coinsCleared.AddRange(Coins);
             Coins = new List<ICoin>();
 
+            NotifyObservers();
+
             return coinsCleared;
         }
 
