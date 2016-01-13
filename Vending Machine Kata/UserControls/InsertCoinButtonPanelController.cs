@@ -1,4 +1,7 @@
-﻿using Vending_Machine_Kata.MonetaryMechanism;
+﻿using System;
+using System.Collections.Generic;
+using Vending_Machine_Kata.MonetaryMechanism;
+using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.UserControls
 {
@@ -11,6 +14,13 @@ namespace Vending_Machine_Kata.UserControls
         {
             InsertCoinButtonPanel = insertCoinButtonPanel;
             CoinAccepter = coinAccepter;
+
+            InsertCoinButtonPanel.InsertPennyButton.Click += InsertPennyButtonEventListener;
+        }
+
+        private void InsertPennyButtonEventListener(object sender, EventArgs eventArgs)
+        {
+            CoinAccepter.Accept(CoinSize.SMALL);
         }
     }
 }

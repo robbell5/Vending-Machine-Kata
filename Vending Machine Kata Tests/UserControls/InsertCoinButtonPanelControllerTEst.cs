@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Vending_Machine_Kata.MonetaryMechanism.Coin;
 using Vending_Machine_Kata.UserControls;
 
 namespace Vending_Machine_Kata_Tests.UserControls
@@ -22,6 +23,20 @@ namespace Vending_Machine_Kata_Tests.UserControls
 
             Assert.AreSame(expectedInsertCoinButtonPanel, insertCoinButtonPanelController.InsertCoinButtonPanel);
             Assert.AreSame(expectedCoinAccepter, insertCoinButtonPanelController.CoinAccepter);
+        }
+
+        [Test]
+        public void TestClickingTheInsertPennyButtonPassesASmallCoinToTheCoinAccepter()
+        {
+            MockInsertCoinButtonPanel mockInsertCoinButtonPanel = new MockInsertCoinButtonPanel();
+            MockCoinAccepter mockCoinAccepter = new MockCoinAccepter();
+
+            new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
+
+            mockInsertCoinButtonPanel.InsertPennyButton.PerformClick();
+
+            Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
+            Assert.AreEqual(CoinSize.SMALL, mockCoinAccepter.LastCoinSizePassedToAccept);
         }
     }
 }
