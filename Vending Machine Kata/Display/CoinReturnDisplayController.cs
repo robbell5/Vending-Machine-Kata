@@ -6,6 +6,13 @@ namespace Vending_Machine_Kata.Display
     public class CoinReturnDisplayController : IDisplayController, ICoinReturnObserver
     {
         public TextBox Display { get; }
+        public ICoinReturn CoinReturn { get; set; }
+
+        public CoinReturnDisplayController(ICoinReturn coinReturn)
+        {
+            CoinReturn = coinReturn;
+        }
+
         public void CoinReturnUpdated()
         {
         }
