@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Vending_Machine_Kata.MonetaryMechanism;
 
 namespace Vending_Machine_Kata.UserControls
 {
@@ -7,10 +8,16 @@ namespace Vending_Machine_Kata.UserControls
     {
         public Form MainForm { get; private set; }
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
+        public ICoinPurse CoinPurse { get; private set; }
+        public ICoinReturn CoinReturn { get; private set; }
 
         public MainFormWrapper(Form form)
         {
             MainForm = form;
+
+            CoinPurse = new CoinPurse();
+            CoinReturn = new CoinReturn();
+
             InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"),
                 GetButtonFromForm("InsertNickelButton"),
                 GetButtonFromForm("InsertDimeButton"),

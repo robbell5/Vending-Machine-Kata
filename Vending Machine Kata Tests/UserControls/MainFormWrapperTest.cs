@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NUnit.Framework;
+using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.UserControls;
 
 namespace Vending_Machine_Kata_Tests.UserControls
@@ -53,6 +54,26 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.AreSame(expectedInsertNickelButton, insertCoinButtonPanel.InsertNickelButton);
             Assert.AreSame(expectedInsertDimeButton, insertCoinButtonPanel.InsertDimeButton);
             Assert.AreSame(expectedInsertQuaterButton, insertCoinButtonPanel.InsertQuarterButton);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsCoinPurse()
+        {
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+
+            ICoinPurse coinPurse = mainFormWrapper.CoinPurse;
+
+            Assert.IsInstanceOf(typeof(ICoinPurse), coinPurse);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsCoinReturn()
+        {
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(new Form());
+
+            ICoinReturn coinPurse = mainFormWrapper.CoinReturn;
+
+            Assert.IsInstanceOf(typeof(ICoinReturn), coinPurse);
         }
     }
 }
