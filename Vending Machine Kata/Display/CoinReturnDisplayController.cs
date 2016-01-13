@@ -13,10 +13,22 @@ namespace Vending_Machine_Kata.Display
             Display = displayTextBox;
             CoinReturn = coinReturn;
             CoinReturn.RegisterObserver(this);
+
+            DisplayMessage(FormatValueToMoney(CoinReturn.AmountAvailable));
         }
 
         public void CoinReturnUpdated()
         {
+        }
+
+        private void DisplayMessage(string message)
+        {
+            Display.Text = message;
+        }
+
+        private static string FormatValueToMoney(decimal value)
+        {
+            return $"{value:C}";
         }
     }
 }

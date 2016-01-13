@@ -43,5 +43,20 @@ namespace Vending_Machine_Kata_Tests.Display
             Assert.AreEqual(1, mockCoinReturn.NumberOfTimesRegisterObserverWasCalled);
             Assert.AreSame(coinReturnDisplayController, mockCoinReturn.ObserversPassedToRegisterObserver[0]);
         }
+
+        [TestCase(12.11, "$12.11")]
+        [TestCase(0.34, "$0.34")]
+        [TestCase(1234.34, "$1,234.34")]
+        public void TestInitializesTextOnDisplayToValueOfCoinReturn(decimal valueToReturnFromCoinReturn, string expectedText)
+        {
+            MockCoinReturn mockCoinReturn = new MockCoinReturn();
+            TextBox displayTextBox = new TextBox();
+
+            mockCoinReturn.ValueToReturnFromAmountAvailable = valueToReturnFromCoinReturn;
+
+            new CoinReturnDisplayController(displayTextBox, mockCoinReturn);
+
+            Assert.AreEqual(expectedText, displayTextBox.Text);
+        }
     }
 }
