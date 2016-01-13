@@ -8,8 +8,9 @@ namespace Vending_Machine_Kata.Display
         public TextBox Display { get; }
         public ICoinReturn CoinReturn { get; set; }
 
-        public CoinReturnDisplayController(ICoinReturn coinReturn)
+        public CoinReturnDisplayController(TextBox displayTextBox, ICoinReturn coinReturn)
         {
+            Display = displayTextBox;
             CoinReturn = coinReturn;
             CoinReturn.RegisterObserver(this);
         }
