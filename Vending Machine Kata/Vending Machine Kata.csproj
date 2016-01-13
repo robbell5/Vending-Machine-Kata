@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Display\ChangeReturnDisplayController.cs" />
+    <Compile Include="Display\CoinReturnDisplayController.cs" />
     <Compile Include="Display\VendingDisplayController.cs" />
     <Compile Include="Display\IDisplayController.cs" />
     <Compile Include="MonetaryMechanism\CoinAccepter.cs" />
@@ -61,7 +61,7 @@
     <Compile Include="MonetaryMechanism\Coin\NullCoin.cs" />
     <Compile Include="MonetaryMechanism\Coin\Penny.cs" />
     <Compile Include="MonetaryMechanism\Coin\Quarter.cs" />
-    <Compile Include="MonetaryMechanism\IChangeReturnObserver.cs" />
+    <Compile Include="MonetaryMechanism\ICoinReturnObserver.cs" />
     <Compile Include="MonetaryMechanism\ICoinAccepter.cs" />
     <Compile Include="MonetaryMechanism\ICoinPurse.cs" />
     <Compile Include="MonetaryMechanism\ICoinPurseObserver.cs" />

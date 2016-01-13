@@ -10,14 +10,14 @@ using Vending_Machine_Kata.MonetaryMechanism;
 namespace Vending_Machine_Kata_Tests.Display
 {
     [TestFixture]
-    public class ChangeReturnDisplayControllerTest
+    public class CoinReturnDisplayControllerTest
     {
         [Test]
         public void TestImplementsInterface()
         {
-            ChangeReturnDisplayController changeReturnDisplayController = new ChangeReturnDisplayController();
-            Assert.IsInstanceOf(typeof(IDisplayController), changeReturnDisplayController);
-            Assert.IsInstanceOf(typeof(IChangeReturnObserver), changeReturnDisplayController);
+            CoinReturnDisplayController coinReturnDisplayController = new CoinReturnDisplayController();
+            Assert.IsInstanceOf(typeof(IDisplayController), coinReturnDisplayController);
+            Assert.IsInstanceOf(typeof(ICoinReturnObserver), coinReturnDisplayController);
         }
     }
 }
