@@ -7,7 +7,8 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     public class CoinPurse : ICoinPurse
     {
         public List<ICoin> Coins { get; private set; }
-        public List<ICoinPurseObserver> Observers { get; private set; }
+        public decimal AmountAvailable { get { return Coins.Sum(coin => coin.Value); } }
+        public List<ICoinPurseObserver> Observers { get; }
 
         public CoinPurse()
         {
@@ -19,11 +20,6 @@ namespace Vending_Machine_Kata.MonetaryMechanism
         {
             Coins.Add(coin);
             NotifyObservers();
-        }
-
-        public decimal AmountAvailable()
-        {
-            return Coins.Sum(coin => coin.Value);
         }
 
         public void RegisterObserver(ICoinPurseObserver coinPurseObserver)

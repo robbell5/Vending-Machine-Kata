@@ -36,10 +36,12 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             CoinsPassedToAddCoin.Add(coin);
         }
 
-        public decimal AmountAvailable()
-        {
-            NumberOfTimesAmountAvailableWasCalled++;
-            return AmountAvailableToReturn;
+        public decimal AmountAvailable {
+            get
+            {
+                NumberOfTimesAmountAvailableWasCalled++;
+                return AmountAvailableToReturn;
+            }
         }
 
         public void RegisterObserver(ICoinPurseObserver coinPurseObserver)

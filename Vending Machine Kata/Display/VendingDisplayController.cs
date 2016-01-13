@@ -25,7 +25,7 @@ namespace Vending_Machine_Kata.Display
 
         public void CoinPurseUpdated()
         {
-            decimal amountAvailableInCoinPurse = CoinPurse.AmountAvailable();
+            decimal amountAvailableInCoinPurse = CoinPurse.AmountAvailable;
 
             DisplayMessage(amountAvailableInCoinPurse > 0
                 ? FormatValueToMoney(amountAvailableInCoinPurse)

@@ -64,7 +64,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             MockCoin coinAdded = new MockCoin() {ValueToReturn = expectedValueOfAllCoins};
 
             coinPurse.AddCoin(coinAdded);
-            Assert.AreEqual(expectedValueOfAllCoins, coinPurse.AmountAvailable());
+            Assert.AreEqual(expectedValueOfAllCoins, coinPurse.AmountAvailable);
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             coinPurse.AddCoin(secondCoinAdded);
             coinPurse.AddCoin(thirdCoinAdded);
 
-            Assert.AreEqual(expectedValueOfAllCoins, coinPurse.AmountAvailable());
+            Assert.AreEqual(expectedValueOfAllCoins, coinPurse.AmountAvailable);
         }
 
         [Test]
