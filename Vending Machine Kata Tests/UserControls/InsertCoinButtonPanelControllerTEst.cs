@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using NUnit.Framework;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 using Vending_Machine_Kata.UserControls;
@@ -33,38 +34,24 @@ namespace Vending_Machine_Kata_Tests.UserControls
 
             new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
 
-            mockInsertCoinButtonPanel.InsertPennyButton.PerformClick();
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.TINY,
+                mockInsertCoinButtonPanel.InsertDimeButton, mockCoinAccepter);
 
-            Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
-            Assert.AreEqual(CoinSize.SMALL, mockCoinAccepter.LastCoinSizePassedToAccept);
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.SMALL,
+                mockInsertCoinButtonPanel.InsertPennyButton, mockCoinAccepter);
+
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.MEDIUM,
+                mockInsertCoinButtonPanel.InsertNickelButton, mockCoinAccepter);
+
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.LARGE,
+                mockInsertCoinButtonPanel.InsertQuarterButton, mockCoinAccepter);
+
         }
 
-        [Test]
-        public void TestClickingTheInsertNickelButtonPassesAMediumCoinToTheCoinAccepter()
+        private void TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize expectedCoinSize, Button buttonToClick, MockCoinAccepter mockCoinAccepter)
         {
-            MockInsertCoinButtonPanel mockInsertCoinButtonPanel = new MockInsertCoinButtonPanel();
-            MockCoinAccepter mockCoinAccepter = new MockCoinAccepter();
-
-            new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
-
-            mockInsertCoinButtonPanel.InsertNickelButton.PerformClick();
-
-            Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
-            Assert.AreEqual(CoinSize.MEDIUM, mockCoinAccepter.LastCoinSizePassedToAccept);
-        }
-
-        [Test]
-        public void TestClickingTheInsertDimeButtonPassesAMediumCoinToTheCoinAccepter()
-        {
-            MockInsertCoinButtonPanel mockInsertCoinButtonPanel = new MockInsertCoinButtonPanel();
-            MockCoinAccepter mockCoinAccepter = new MockCoinAccepter();
-
-            new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
-
-            mockInsertCoinButtonPanel.InsertDimeButton.PerformClick();
-
-            Assert.AreEqual(1, mockCoinAccepter.NumberOfTimeAcceptWasCalled);
-            Assert.AreEqual(CoinSize.TINY, mockCoinAccepter.LastCoinSizePassedToAccept);
+            buttonToClick.PerformClick();
+            Assert.AreEqual(expectedCoinSize, mockCoinAccepter.LastCoinSizePassedToAccept);
         }
     }
 }
