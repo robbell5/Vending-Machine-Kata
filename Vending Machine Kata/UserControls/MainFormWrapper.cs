@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
@@ -13,6 +14,7 @@ namespace Vending_Machine_Kata.UserControls
         public ICoinReturn CoinReturn { get; }
         public ICoinAccepter CoinAccepter { get; set; }
         public ICoinFactory CoinFactory { get; set; }
+        public DisplayController DisplayController { get; set; }
 
         public MainFormWrapper(Form form)
         {
@@ -23,6 +25,8 @@ namespace Vending_Machine_Kata.UserControls
             CoinFactory = new CoinFactory();
 
             CoinAccepter = new CoinAccepter(CoinFactory, CoinPurse, CoinReturn);
+
+            DisplayController = new DisplayController(GetTextBoxFromForm("DisplayTextBox"), CoinPurse);
 
             InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"),
                 GetButtonFromForm("InsertNickelButton"),
@@ -39,6 +43,17 @@ namespace Vending_Machine_Kata.UserControls
                 return (Button) control;
 
             return new Button();
+        }
+
+        private TextBox GetTextBoxFromForm(string controlName)
+        {
+            foreach (
+                Control control in
+                    MainForm.Controls.Cast<Control>()
+                        .Where(control => control.GetType() == typeof(TextBox) && control.Name == controlName))
+                return (TextBox)control;
+
+            return new TextBox();
         }
     }
 }

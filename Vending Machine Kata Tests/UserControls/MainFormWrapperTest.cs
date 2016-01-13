@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using NUnit.Framework;
+using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 using Vending_Machine_Kata.UserControls;
@@ -10,7 +11,7 @@ namespace Vending_Machine_Kata_Tests.UserControls
     public class MainFormWrapperTest
     {
         [Test]
-        public void TestProperties()
+        public void TestBaseProperties()
         {
             Form expectedForm = new Form();
             MainFormWrapper mainFormWrapper = new MainFormWrapper(expectedForm);
@@ -93,6 +94,23 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.AreSame(mainFormWrapper.CoinFactory, coinAccepter.CoinFactory);
             Assert.AreSame(mainFormWrapper.CoinPurse, coinAccepter.CoinPurse);
             Assert.AreSame(mainFormWrapper.CoinReturn, coinAccepter.CoinReturn);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsDisplayController()
+        {
+            Form mainForm = new Form();
+            TextBox expectedDisplayTextBox = new TextBox();
+            expectedDisplayTextBox.Name = "DisplayTextBox";
+            mainForm.Controls.Add(expectedDisplayTextBox);
+
+            MainFormWrapper mainFormWrapper = new MainFormWrapper(mainForm);
+
+            DisplayController displayController = mainFormWrapper.DisplayController;
+
+            Assert.IsInstanceOf(typeof(DisplayController), displayController);
+            Assert.AreSame(expectedDisplayTextBox, displayController.Display);
+            Assert.AreSame(mainFormWrapper.CoinPurse, displayController.CoinPurse);
         }
     }
 }
