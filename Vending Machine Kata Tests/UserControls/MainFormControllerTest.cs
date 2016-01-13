@@ -107,9 +107,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
 
             MainFormController mainFormController = new MainFormController(mainForm);
 
-            DisplayController displayController = mainFormController.DisplayController;
+            VendingDisplayController displayController = mainFormController.DisplayController;
 
-            Assert.IsInstanceOf(typeof(DisplayController), displayController);
+            Assert.IsInstanceOf(typeof(VendingDisplayController), displayController);
             Assert.AreSame(expectedDisplayTextBox, displayController.Display);
             Assert.AreSame(mainFormController.CoinPurse, displayController.CoinPurse);
         }

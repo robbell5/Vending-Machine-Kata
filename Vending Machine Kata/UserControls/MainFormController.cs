@@ -15,7 +15,7 @@ namespace Vending_Machine_Kata.UserControls
         public ICoinReturn CoinReturn { get; }
         public ICoinAccepter CoinAccepter { get; }
         public ICoinFactory CoinFactory { get; }
-        public DisplayController DisplayController { get; }
+        public VendingDisplayController DisplayController { get; }
         public ChangeReturnButtonController ChangeReturnButtonController { get; }
         public InsertCoinButtonPanelController InsertCoinButtonPanelController { get; }
 
@@ -29,7 +29,7 @@ namespace Vending_Machine_Kata.UserControls
 
             CoinAccepter = new CoinAccepter(CoinFactory, CoinPurse, CoinReturn);
 
-            DisplayController = new DisplayController(GetTextBoxFromForm("DisplayTextBox"), CoinPurse);
+            DisplayController = new VendingDisplayController(GetTextBoxFromForm("DisplayTextBox"), CoinPurse);
 
             ChangeReturnButtonController = new ChangeReturnButtonController(GetButtonFromForm("ChangeReturnButton"),
                 CoinPurse, CoinReturn);

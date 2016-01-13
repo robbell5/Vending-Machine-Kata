@@ -52,7 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Display\DisplayControllerTest.cs" />
+    <Compile Include="Display\VendingDisplayControllerTest.cs" />
     <Compile Include="MonetaryMechanism\CoinAccepterTest.cs" />
     <Compile Include="MonetaryMechanism\CoinPurseTest.cs" />
     <Compile Include="MonetaryMechanism\CoinReturnTest.cs" />

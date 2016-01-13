@@ -7,12 +7,12 @@ using Vending_Machine_Kata_Tests.MonetaryMechanism;
 namespace Vending_Machine_Kata_Tests.Display
 {
     [TestFixture]
-    public class DisplayControllerTest
+    public class VendingDisplayControllerTest
     {
         [Test]
         public void TestImplementsInterface()
         {
-            DisplayController displayController = new DisplayController(new TextBox(), new MockCoinPurse());
+            VendingDisplayController displayController = new VendingDisplayController(new TextBox(), new MockCoinPurse());
 
             Assert.IsInstanceOf(typeof(IDisplayController), displayController);
             Assert.IsInstanceOf(typeof(ICoinPurseObserver), displayController);
@@ -24,7 +24,7 @@ namespace Vending_Machine_Kata_Tests.Display
             TextBox expectedTextBox = new TextBox();
             MockCoinPurse expectedCoinPurse = new MockCoinPurse();
 
-            DisplayController displayController = new DisplayController(expectedTextBox, expectedCoinPurse);
+            VendingDisplayController displayController = new VendingDisplayController(expectedTextBox, expectedCoinPurse);
 
             Assert.AreSame(expectedTextBox, displayController.Display);
             Assert.AreSame(expectedCoinPurse, displayController.CoinPurse);
@@ -34,7 +34,7 @@ namespace Vending_Machine_Kata_Tests.Display
         public void TestRegistersItselfAsObserverWithCoinPurse()
         {
             MockCoinPurse mockCoinPurse = new MockCoinPurse();
-            DisplayController displayController = new DisplayController(new TextBox(), mockCoinPurse);
+            VendingDisplayController displayController = new VendingDisplayController(new TextBox(), mockCoinPurse);
 
             Assert.AreEqual(1, mockCoinPurse.NumberOfTimesRegisterObserverWasCalled);
             Assert.AreEqual(displayController, mockCoinPurse.RegisteredCoinPurseObservers[0]);
@@ -44,7 +44,7 @@ namespace Vending_Machine_Kata_Tests.Display
         public void TestSetsTextBoxToMultiline()
         {
             TextBox displayTextBox = new TextBox();
-            DisplayController displayController = new DisplayController(displayTextBox, new MockCoinPurse());
+            VendingDisplayController displayController = new VendingDisplayController(displayTextBox, new MockCoinPurse());
 
             Assert.False(displayTextBox.Multiline);
         }
@@ -53,7 +53,7 @@ namespace Vending_Machine_Kata_Tests.Display
         public void TestSetsFirstMessageOnDisplayTextBox()
         {
             TextBox displayTextBox = new TextBox();
-            new DisplayController(displayTextBox, new MockCoinPurse());
+            new VendingDisplayController(displayTextBox, new MockCoinPurse());
 
             string expectedText = "INSERT COINS";
 
@@ -69,7 +69,7 @@ namespace Vending_Machine_Kata_Tests.Display
             TextBox displayTextBox = new TextBox();
             MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = purseValue };
 
-            DisplayController displayController = new DisplayController(displayTextBox, mockCoinPurse);
+            VendingDisplayController displayController = new VendingDisplayController(displayTextBox, mockCoinPurse);
 
             displayController.CoinPurseUpdated();
 
@@ -82,7 +82,7 @@ namespace Vending_Machine_Kata_Tests.Display
             TextBox displayTextBox = new TextBox();
             MockCoinPurse mockCoinPurse = new MockCoinPurse { AmountAvailableToReturn = 0.99m };
 
-            DisplayController displayController = new DisplayController(displayTextBox, mockCoinPurse);
+            VendingDisplayController displayController = new VendingDisplayController(displayTextBox, mockCoinPurse);
 
             displayController.CoinPurseUpdated();
 

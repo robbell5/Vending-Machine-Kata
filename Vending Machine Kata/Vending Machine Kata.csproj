@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Display\DisplayController.cs" />
+    <Compile Include="Display\VendingDisplayController.cs" />
     <Compile Include="Display\IDisplayController.cs" />
     <Compile Include="MonetaryMechanism\CoinAccepter.cs" />
     <Compile Include="MonetaryMechanism\CoinPurse.cs" />
