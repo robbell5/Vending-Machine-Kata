@@ -5,13 +5,13 @@ using Vending_Machine_Kata.MonetaryMechanism.Coin;
 
 namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
 {
-    public class ChangeReturnButtonController
+    public class ReturnChangeButtonController
     {
         public Button Button { get; set; }
         public ICoinPurse CoinPurse { get; set; }
         public ICoinReturn CoinReturn { get; set; }
 
-        public ChangeReturnButtonController(Button changeReturnButton, ICoinPurse coinPurse, ICoinReturn coinReturn)
+        public ReturnChangeButtonController(Button changeReturnButton, ICoinPurse coinPurse, ICoinReturn coinReturn)
         {
             Button = changeReturnButton;
             CoinPurse = coinPurse;

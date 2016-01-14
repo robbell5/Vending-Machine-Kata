@@ -16,6 +16,7 @@ namespace Vending_Machine_Kata.UserControls
         private const string InsertDimeButtonName = "InsertDimeButton";
         private const string InsertQuarterButtonName = "InsertQuarterButton";
         private const string CoinReturnDisplayTextBoxName = "CoinReturnDisplayTextBox";
+        private const string ClearCoinReturnButtonName = "ClearCoinReturnButton";
 
         public Form MainForm { get; }
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
@@ -24,9 +25,10 @@ namespace Vending_Machine_Kata.UserControls
         public ICoinAccepter CoinAccepter { get; }
         public ICoinFactory CoinFactory { get; }
         public VendingDisplayController DisplayController { get; }
-        public ChangeReturnButtonController ChangeReturnButtonController { get; }
+        public ReturnChangeButtonController ReturnChangeButtonController { get; }
         public InsertCoinButtonPanelController InsertCoinButtonPanelController { get; }
         public CoinReturnDisplayController CoinReturnDisplayController { get; private set; }
+        public ClearCoinReturnButtonController ClearCoinReturnButtonController { get; private set; }
 
         public MainFormController(Form form)
         {
@@ -40,7 +42,7 @@ namespace Vending_Machine_Kata.UserControls
 
             DisplayController = new VendingDisplayController(GetTextBoxFromForm(DisplayTextBoxName), CoinPurse);
 
-            ChangeReturnButtonController = new ChangeReturnButtonController(GetButtonFromForm(ChangeReturnButtonName),
+            ReturnChangeButtonController = new ReturnChangeButtonController(GetButtonFromForm(ChangeReturnButtonName),
                 CoinPurse, CoinReturn);
 
             InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm(InsertPennyButtonName),
@@ -50,7 +52,11 @@ namespace Vending_Machine_Kata.UserControls
 
             InsertCoinButtonPanelController = new InsertCoinButtonPanelController(InsertCoinButtonPanel, CoinAccepter);
 
-            CoinReturnDisplayController = new CoinReturnDisplayController(GetTextBoxFromForm(CoinReturnDisplayTextBoxName), CoinReturn);
+            CoinReturnDisplayController =
+                new CoinReturnDisplayController(GetTextBoxFromForm(CoinReturnDisplayTextBoxName), CoinReturn);
+
+            ClearCoinReturnButtonController =
+                new ClearCoinReturnButtonController(GetButtonFromForm(ClearCoinReturnButtonName), CoinReturn);
         }
 
         private Button GetButtonFromForm(string controlName)

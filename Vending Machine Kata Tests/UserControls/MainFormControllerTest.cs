@@ -123,12 +123,12 @@ namespace Vending_Machine_Kata_Tests.UserControls
             mainForm.Controls.Add(expectedChangeReturnButton);
             MainFormController mainFormController = new MainFormController(mainForm);
 
-            ChangeReturnButtonController changeReturnButtonController = mainFormController.ChangeReturnButtonController;
+            ReturnChangeButtonController returnChangeButtonController = mainFormController.ReturnChangeButtonController;
 
-            Assert.IsInstanceOf(typeof(ChangeReturnButtonController), changeReturnButtonController);
-            Assert.AreSame(expectedChangeReturnButton, changeReturnButtonController.Button);
-            Assert.AreSame(mainFormController.CoinPurse, changeReturnButtonController.CoinPurse);
-            Assert.AreSame(mainFormController.CoinReturn, changeReturnButtonController.CoinReturn);
+            Assert.IsInstanceOf(typeof(ReturnChangeButtonController), returnChangeButtonController);
+            Assert.AreSame(expectedChangeReturnButton, returnChangeButtonController.Button);
+            Assert.AreSame(mainFormController.CoinPurse, returnChangeButtonController.CoinPurse);
+            Assert.AreSame(mainFormController.CoinReturn, returnChangeButtonController.CoinReturn);
         }
 
         [Test]
@@ -157,6 +157,22 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.IsInstanceOf(typeof(CoinReturnDisplayController), coinReturnDisplayController);
             Assert.AreEqual(expectedTextBox, coinReturnDisplayController.Display);
             Assert.AreEqual(mainFormController.CoinReturn, coinReturnDisplayController.CoinReturn);
+        }
+
+        [Test]
+        public void TestCorrectlyBuildsClearCoinReturnButtonController()
+        {
+            Form mainForm = new Form();
+            Button expectedClearCoinReturnButton = new Button() {Name = "ClearCoinReturnButton"};
+            mainForm.Controls.Add(expectedClearCoinReturnButton);
+
+            MainFormController mainFormController = new MainFormController(mainForm);
+
+            ClearCoinReturnButtonController clearCoinReturnButtonController = mainFormController.ClearCoinReturnButtonController;
+
+            Assert.IsInstanceOf(typeof(ClearCoinReturnButtonController), clearCoinReturnButtonController);
+            Assert.AreEqual(expectedClearCoinReturnButton, clearCoinReturnButtonController.Button);
+            Assert.AreEqual(mainFormController.CoinReturn, clearCoinReturnButtonController.CoinReturn);
         }
     }
 }

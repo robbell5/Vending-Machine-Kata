@@ -8,7 +8,7 @@ using Vending_Machine_Kata_Tests.MonetaryMechanism.Coin;
 namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
 {
     [TestFixture]
-    public class ChangeReturnButtonControllerTest
+    public class ReturnChangeButtonControllerTest
     {
         [Test]
         public void TestProperties()
@@ -17,12 +17,12 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
             MockCoinPurse expectedCoinPurse = new MockCoinPurse();
             MockCoinReturn expectedCoinReturn = new MockCoinReturn();
 
-            ChangeReturnButtonController changeReturnButtonController =
-                new ChangeReturnButtonController(expectedChangeReturnButton, expectedCoinPurse, expectedCoinReturn);
+            ReturnChangeButtonController returnChangeButtonController =
+                new ReturnChangeButtonController(expectedChangeReturnButton, expectedCoinPurse, expectedCoinReturn);
 
-            Assert.AreEqual(expectedChangeReturnButton, changeReturnButtonController.Button);
-            Assert.AreEqual(expectedCoinPurse, changeReturnButtonController.CoinPurse);
-            Assert.AreEqual(expectedCoinReturn, changeReturnButtonController.CoinReturn);
+            Assert.AreEqual(expectedChangeReturnButton, returnChangeButtonController.Button);
+            Assert.AreEqual(expectedCoinPurse, returnChangeButtonController.CoinPurse);
+            Assert.AreEqual(expectedCoinReturn, returnChangeButtonController.CoinReturn);
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
             Button changeReturnButton = new Button();
             MockCoinPurse mockCoinPurse = new MockCoinPurse();
 
-            new ChangeReturnButtonController(changeReturnButton,
+            new ReturnChangeButtonController(changeReturnButton,
                 mockCoinPurse, new MockCoinReturn());
 
             changeReturnButton.PerformClick();
@@ -49,7 +49,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
             List<ICoin> coinsFromCoinPurse = new List<ICoin>() {new MockCoin(), new MockCoin()};
             mockCoinPurse.CoinsToReturnFromClear = coinsFromCoinPurse;
 
-            new ChangeReturnButtonController(changeReturnButton,
+            new ReturnChangeButtonController(changeReturnButton,
                 mockCoinPurse, mockCoinReturn);
 
             changeReturnButton.PerformClick();
