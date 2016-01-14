@@ -2,9 +2,9 @@
 {
     public enum CoinSize
     {
-        TINY = 1,
-        SMALL = 2,
-        MEDIUM = 3,
-        LARGE = 4
+        Tiny = 1,
+        Small = 2,
+        Medium = 3,
+        Large = 4
     }
 }

@@ -5,17 +5,9 @@ namespace Vending_Machine_Kata_Tests.UserControls
 {
     class MockInsertCoinButtonPanel : IInsertCoinButtonPanel
     {
-        public Button InsertPennyButton { get; }
-        public Button InsertNickelButton { get; }
-        public Button InsertDimeButton { get; }
-        public Button InsertQuarterButton { get; }
-
-        public MockInsertCoinButtonPanel()
-        {
-            InsertPennyButton = new Button();
-            InsertNickelButton = new Button();
-            InsertDimeButton = new Button();
-            InsertQuarterButton = new Button();
-        }
+        public Button InsertPennyButton { get; } = new Button();
+        public Button InsertNickelButton { get; } = new Button();
+        public Button InsertDimeButton { get; } = new Button();
+        public Button InsertQuarterButton { get; } = new Button();
     }
 }

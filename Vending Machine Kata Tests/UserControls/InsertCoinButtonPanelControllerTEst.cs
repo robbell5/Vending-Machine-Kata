@@ -29,16 +29,16 @@ namespace Vending_Machine_Kata_Tests.UserControls
 
             new InsertCoinButtonPanelController(mockInsertCoinButtonPanel, mockCoinAccepter);
 
-            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.TINY,
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.Tiny,
                 mockInsertCoinButtonPanel.InsertDimeButton, mockCoinAccepter);
 
-            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.SMALL,
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.Small,
                 mockInsertCoinButtonPanel.InsertPennyButton, mockCoinAccepter);
 
-            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.MEDIUM,
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.Medium,
                 mockInsertCoinButtonPanel.InsertNickelButton, mockCoinAccepter);
 
-            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.LARGE,
+            TestClickingButtonPassesCorrectCoinSizeToCoinAccepter(CoinSize.Large,
                 mockInsertCoinButtonPanel.InsertQuarterButton, mockCoinAccepter);
 
         }

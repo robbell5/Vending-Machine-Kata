@@ -6,13 +6,13 @@
         {
             switch (coinSize)
             {
-                case CoinSize.SMALL:
+                case CoinSize.Small:
                     return new Penny();
-                case CoinSize.TINY:
+                case CoinSize.Tiny:
                     return new Dime();
-                case CoinSize.MEDIUM:
+                case CoinSize.Medium:
                     return new Nickel();
-                case CoinSize.LARGE:
+                case CoinSize.Large:
                     return new Quarter();
                 default:
                     break;

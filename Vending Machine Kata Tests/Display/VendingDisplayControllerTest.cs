@@ -14,8 +14,8 @@ namespace Vending_Machine_Kata_Tests.Display
         {
             VendingDisplayController displayController = new VendingDisplayController(new TextBox(), new MockCoinPurse());
 
-            Assert.IsInstanceOf(typeof(IDisplayController), displayController);
-            Assert.IsInstanceOf(typeof(ICoinPurseObserver), displayController);
+            Assert.IsInstanceOf(typeof (IDisplayController), displayController);
+            Assert.IsInstanceOf(typeof (ICoinPurseObserver), displayController);
         }
 
         [Test]
@@ -41,21 +41,12 @@ namespace Vending_Machine_Kata_Tests.Display
         }
 
         [Test]
-        public void TestSetsTextBoxToMultiline()
-        {
-            TextBox displayTextBox = new TextBox();
-            VendingDisplayController displayController = new VendingDisplayController(displayTextBox, new MockCoinPurse());
-
-            Assert.False(displayTextBox.Multiline);
-        }
-
-        [Test]
         public void TestSetsFirstMessageOnDisplayTextBox()
         {
             TextBox displayTextBox = new TextBox();
             new VendingDisplayController(displayTextBox, new MockCoinPurse());
 
-            string expectedText = "INSERT COINS";
+            const string expectedText = "INSERT COINS";
 
             Assert.AreEqual(expectedText, displayTextBox.Text);
         }
@@ -64,10 +55,11 @@ namespace Vending_Machine_Kata_Tests.Display
         [TestCase(0.05, "$0.05")]
         [TestCase(1000.15, "$1,000.15")]
         [TestCase(0.99, "$0.99")]
-        public void TestSetsCurrentPurseValueFormatedLikeMoneyWhenCoinPurseNotifiesAmountHasChanged( decimal purseValue, string expectedDisplayText)
+        public void TestSetsCurrentPurseValueFormatedLikeMoneyWhenCoinPurseNotifiesAmountHasChanged(decimal purseValue,
+            string expectedDisplayText)
         {
             TextBox displayTextBox = new TextBox();
-            MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = purseValue };
+            MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = purseValue};
 
             VendingDisplayController displayController = new VendingDisplayController(displayTextBox, mockCoinPurse);
 
@@ -80,7 +72,7 @@ namespace Vending_Machine_Kata_Tests.Display
         public void TestSetsDisplayTestBackToInitialMessageIfCoinPurseIsZero()
         {
             TextBox displayTextBox = new TextBox();
-            MockCoinPurse mockCoinPurse = new MockCoinPurse { AmountAvailableToReturn = 0.99m };
+            MockCoinPurse mockCoinPurse = new MockCoinPurse {AmountAvailableToReturn = 0.99m};
 
             VendingDisplayController displayController = new VendingDisplayController(displayTextBox, mockCoinPurse);
 

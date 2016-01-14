@@ -11,7 +11,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         [Test]
         public void TestImplementsInterface()
         {
-            Assert.IsInstanceOf(typeof(ICoinAccepter), new CoinAccepter(null, null, null));
+            Assert.IsInstanceOf(typeof (ICoinAccepter), new CoinAccepter(null, null, null));
         }
 
         [Test]
@@ -28,10 +28,10 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreSame(expectedCoinReturn, coinAccepter.CoinReturn);
         }
 
-        [TestCase(CoinSize.TINY)]
-        [TestCase(CoinSize.SMALL)]
-        [TestCase(CoinSize.MEDIUM)]
-        [TestCase(CoinSize.LARGE)]
+        [TestCase(CoinSize.Tiny)]
+        [TestCase(CoinSize.Small)]
+        [TestCase(CoinSize.Medium)]
+        [TestCase(CoinSize.Large)]
         public void TestAcceptCallsBuildOnCoinFactoryWithSizeAndWeightPassed(CoinSize coinSize)
         {
             MockCoinFactory mockCoinFactory = new MockCoinFactory();
@@ -52,7 +52,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             mockCoinFactory.CoinToReturn = expectedCoin;
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, new MockCoinReturn());
-            coinAccepter.Accept(CoinSize.TINY);
+            coinAccepter.Accept(CoinSize.Tiny);
 
             Assert.AreEqual(1, mockCoinPurse.NumberOfTimesAddCoinWasCalled);
             Assert.AreEqual(1, mockCoinPurse.CoinsPassedToAddCoin.Count);
@@ -68,12 +68,12 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             MockCoinPurse mockCoinPurse = new MockCoinPurse();
             MockCoinReturn mockCoinReturn = new MockCoinReturn();
 
-            MockCoin mockCoin = new MockCoin {ValueToReturn = coinValue };
+            MockCoin mockCoin = new MockCoin {ValueToReturn = coinValue};
             mockCoinFactory.CoinToReturn = mockCoin;
 
             CoinAccepter coinAccepter = new CoinAccepter(mockCoinFactory, mockCoinPurse, mockCoinReturn);
 
-            coinAccepter.Accept(CoinSize.LARGE);
+            coinAccepter.Accept(CoinSize.Large);
 
             Assert.AreSame(mockCoin, mockCoinReturn.CoinsPassedToAddCoin[0]);
             Assert.AreEqual(1, mockCoinReturn.NumberOfTimesAddCoinCalled);
