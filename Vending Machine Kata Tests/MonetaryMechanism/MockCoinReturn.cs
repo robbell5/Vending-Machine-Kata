@@ -15,6 +15,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public List<ICoinReturnObserver> ObserversPassedToRegisterObserver { get; }
         public int NumberOfTimesRegisterObserverWasCalled { get; private set; }
         public decimal ValueToReturnFromAmountAvailable { get; set; }
+        public int NumberOfTimesClearWasCalled { get; set; }
 
         public void RegisterObserver(ICoinReturnObserver coinReturnObserver)
         {
@@ -27,6 +28,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             ValueToReturnFromAmountAvailable = 0;
             NumberOfTimesRegisterObserverWasCalled = 0;
             NumberOfTimesAddCoinCalled = 0;
+            NumberOfTimesClearWasCalled = 0;
             CoinsPassedToAddCoin = new List<ICoin>();
             ObserversPassedToRegisterObserver = new List<ICoinReturnObserver>();
         }
@@ -39,6 +41,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 
         public List<ICoin> Clear()
         {
+            NumberOfTimesClearWasCalled++;
             return null;
         }
     }

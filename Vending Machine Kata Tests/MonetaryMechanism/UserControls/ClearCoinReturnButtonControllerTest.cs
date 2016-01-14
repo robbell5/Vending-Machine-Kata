@@ -23,5 +23,21 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
             Assert.AreSame(expectedCoinReturn, clearCoinReturnButtonController.CoinReturn);
             Assert.AreSame(expectedClearCoinReturnButton, clearCoinReturnButtonController.Button);
         }
+
+        [Test]
+        public void TestClickingButtonCallsClearOnCoinReturn()
+        {
+            Button clearCoinReturnButton = new Button();
+            MockCoinReturn mockCoinReturn = new MockCoinReturn();
+
+            ClearCoinReturnButtonController clearCoinReturnButtonController =
+                new ClearCoinReturnButtonController(clearCoinReturnButton, mockCoinReturn);
+
+            Assert.AreEqual(0, mockCoinReturn.NumberOfTimesClearWasCalled);
+
+            clearCoinReturnButton.PerformClick();
+
+            Assert.AreEqual(1, mockCoinReturn.NumberOfTimesClearWasCalled);
+        }
     }
 }
