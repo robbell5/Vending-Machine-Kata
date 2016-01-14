@@ -9,6 +9,14 @@ namespace Vending_Machine_Kata.UserControls
 {
     public class MainFormController
     {
+        private const string DisplayTextBoxName = "DisplayTextBox";
+        private const string ChangeReturnButtonName = "ChangeReturnButton";
+        private const string InsertPennyButtonName = "InsertPennyButton";
+        private const string InsertNickelButtonName = "InsertNickelButton";
+        private const string InsertDimeButtonName = "InsertDimeButton";
+        private const string InsertQuarterButtonName = "InsertQuarterButton";
+        private const string CoinReturnDisplayTextBoxName = "CoinReturnDisplayTextBox";
+
         public Form MainForm { get; }
         public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
         public ICoinPurse CoinPurse { get; }
@@ -18,6 +26,7 @@ namespace Vending_Machine_Kata.UserControls
         public VendingDisplayController DisplayController { get; }
         public ChangeReturnButtonController ChangeReturnButtonController { get; }
         public InsertCoinButtonPanelController InsertCoinButtonPanelController { get; }
+        public CoinReturnDisplayController CoinReturnDisplayController { get; private set; }
 
         public MainFormController(Form form)
         {
@@ -29,17 +38,19 @@ namespace Vending_Machine_Kata.UserControls
 
             CoinAccepter = new CoinAccepter(CoinFactory, CoinPurse, CoinReturn);
 
-            DisplayController = new VendingDisplayController(GetTextBoxFromForm("DisplayTextBox"), CoinPurse);
+            DisplayController = new VendingDisplayController(GetTextBoxFromForm(DisplayTextBoxName), CoinPurse);
 
-            ChangeReturnButtonController = new ChangeReturnButtonController(GetButtonFromForm("ChangeReturnButton"),
+            ChangeReturnButtonController = new ChangeReturnButtonController(GetButtonFromForm(ChangeReturnButtonName),
                 CoinPurse, CoinReturn);
 
-            InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm("InsertPennyButton"),
-                GetButtonFromForm("InsertNickelButton"),
-                GetButtonFromForm("InsertDimeButton"),
-                GetButtonFromForm("InsertQuarterButton"));
+            InsertCoinButtonPanel = new InsertCoinButtonPanel(GetButtonFromForm(InsertPennyButtonName),
+                GetButtonFromForm(InsertNickelButtonName),
+                GetButtonFromForm(InsertDimeButtonName),
+                GetButtonFromForm(InsertQuarterButtonName));
 
             InsertCoinButtonPanelController = new InsertCoinButtonPanelController(InsertCoinButtonPanel, CoinAccepter);
+
+            CoinReturnDisplayController = new CoinReturnDisplayController(GetTextBoxFromForm(CoinReturnDisplayTextBoxName), CoinReturn);
         }
 
         private Button GetButtonFromForm(string controlName)

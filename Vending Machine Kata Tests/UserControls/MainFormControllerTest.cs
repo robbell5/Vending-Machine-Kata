@@ -142,5 +142,21 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.AreSame(mainFormController.CoinAccepter,insertCoinButtonPanelController.CoinAccepter);
             Assert.AreSame(mainFormController.InsertCoinButtonPanel,insertCoinButtonPanelController.InsertCoinButtonPanel);
         }
+
+        [Test]
+        public void TestCorrectlyBuildsCoinReturnDisplayController()
+        {
+            Form mainForm = new Form();
+            TextBox expectedTextBox = new TextBox() {Name = "CoinReturnDisplayTextBox"};
+            mainForm.Controls.Add(expectedTextBox);
+
+            MainFormController mainFormController = new MainFormController(mainForm);
+
+            CoinReturnDisplayController coinReturnDisplayController = mainFormController.CoinReturnDisplayController;
+
+            Assert.IsInstanceOf(typeof(CoinReturnDisplayController), coinReturnDisplayController);
+            Assert.AreEqual(expectedTextBox, coinReturnDisplayController.Display);
+            Assert.AreEqual(mainFormController.CoinReturn, coinReturnDisplayController.CoinReturn);
+        }
     }
 }
