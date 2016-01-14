@@ -67,6 +67,7 @@
     <Compile Include="MonetaryMechanism\ICoinPurseObserver.cs" />
     <Compile Include="MonetaryMechanism\ICoinReturn.cs" />
     <Compile Include="MonetaryMechanism\UserControls\ChangeReturnButtonController.cs" />
+    <Compile Include="MonetaryMechanism\UserControls\ClearCoinReturnButtonController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleForm.cs">
