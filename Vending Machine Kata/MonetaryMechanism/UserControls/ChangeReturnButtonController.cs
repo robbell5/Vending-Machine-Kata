@@ -16,16 +16,13 @@ namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
             Button = changeReturnButton;
             CoinPurse = coinPurse;
             CoinReturn = coinReturn;
-
             Button.Click += ButtonEventListener;
         }
 
         private void ButtonEventListener(object sender, EventArgs eventArgs)
         {
             List<ICoin> coinsFromPurse = CoinPurse.Clear();
-
-            foreach (ICoin coinFromPurse in coinsFromPurse)
-                CoinReturn.AddCoin(coinFromPurse);
+            coinsFromPurse.ForEach(coin => CoinReturn.AddCoin(coin));
         }
     }
 }
