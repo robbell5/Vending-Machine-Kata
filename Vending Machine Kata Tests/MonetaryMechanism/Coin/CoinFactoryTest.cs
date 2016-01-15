@@ -13,10 +13,10 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
            Assert.IsInstanceOf(typeof(ICoinFactory), new CoinFactory());
         }
 
-        [TestCase(typeof(Penny), CoinSize.SMALL)]
-        [TestCase(typeof(Dime), CoinSize.TINY)]
-        [TestCase(typeof(Nickel), CoinSize.MEDIUM)]
-        [TestCase(typeof(Quarter), CoinSize.LARGE)]
+        [TestCase(typeof(Penny), CoinSize.Small)]
+        [TestCase(typeof(Dime), CoinSize.Tiny)]
+        [TestCase(typeof(Nickel), CoinSize.Medium)]
+        [TestCase(typeof(Quarter), CoinSize.Large)]
         [TestCase(typeof(NullCoin), null)]
         public void TestBuildsCorrectCoinForGivenSizeAndWeight(Type expectedType, CoinSize coinSize)
         {

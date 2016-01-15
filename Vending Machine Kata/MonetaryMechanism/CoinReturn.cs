@@ -6,15 +6,9 @@ namespace Vending_Machine_Kata.MonetaryMechanism
 {
     public class CoinReturn : ICoinReturn
     {
-        public List<ICoin> Coins { get; private set; }
-        public List<ICoinReturnObserver> Observers { get; private set; }
+        public List<ICoin> Coins { get; private set; } = new List<ICoin>();
+        public List<ICoinReturnObserver> Observers { get; } = new List<ICoinReturnObserver>();
         public decimal AmountAvailable { get { return Coins.Sum(coin => coin.Value); } }
-
-        public CoinReturn()
-        {
-            Observers = new List<ICoinReturnObserver>();
-            Coins = new List<ICoin>();
-        }
 
         public void AddCoin(ICoin coin)
         {

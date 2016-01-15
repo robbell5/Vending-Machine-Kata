@@ -6,10 +6,10 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.Coin
     [TestFixture]
     public class CoinSizeTest
     {
-        [TestCase(CoinSize.TINY, 1)]
-        [TestCase(CoinSize.SMALL, 2)]
-        [TestCase(CoinSize.MEDIUM, 3)]
-        [TestCase(CoinSize.LARGE, 4)]
+        [TestCase(CoinSize.Tiny, 1)]
+        [TestCase(CoinSize.Small, 2)]
+        [TestCase(CoinSize.Medium, 3)]
+        [TestCase(CoinSize.Large, 4)]
         public void TestEnumValues(CoinSize coinSize, int expectedValue)
         {
             Assert.AreEqual(expectedValue, coinSize.GetHashCode());

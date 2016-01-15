@@ -19,11 +19,11 @@ namespace Vending_Machine_Kata.UserControls
         private const string ClearCoinReturnButtonName = "ClearCoinReturnButton";
 
         public Form MainForm { get; }
-        public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
-        public ICoinPurse CoinPurse { get; }
-        public ICoinReturn CoinReturn { get; }
+        public IInsertCoinButtonPanel InsertCoinButtonPanel { get; }
+        public ICoinPurse CoinPurse { get; } = new CoinPurse();
+        public ICoinReturn CoinReturn { get; } = new CoinReturn();
         public ICoinAccepter CoinAccepter { get; }
-        public ICoinFactory CoinFactory { get; }
+        public ICoinFactory CoinFactory { get; } = new CoinFactory();
         public VendingDisplayController DisplayController { get; }
         public ReturnChangeButtonController ReturnChangeButtonController { get; }
         public InsertCoinButtonPanelController InsertCoinButtonPanelController { get; }
@@ -33,10 +33,6 @@ namespace Vending_Machine_Kata.UserControls
         public MainFormController(Form form)
         {
             MainForm = form;
-
-            CoinPurse = new CoinPurse();
-            CoinReturn = new CoinReturn();
-            CoinFactory = new CoinFactory();
 
             CoinAccepter = new CoinAccepter(CoinFactory, CoinPurse, CoinReturn);
 

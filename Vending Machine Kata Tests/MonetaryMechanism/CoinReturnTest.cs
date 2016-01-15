@@ -3,7 +3,6 @@ using NUnit.Framework;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
 using Vending_Machine_Kata_Tests.MonetaryMechanism.Coin;
-using Vending_Machine_Kata_Tests.UserControls;
 
 namespace Vending_Machine_Kata_Tests.MonetaryMechanism
 {

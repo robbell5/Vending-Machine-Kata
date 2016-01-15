@@ -6,8 +6,8 @@ namespace Vending_Machine_Kata.UserControls
 {
     public class InsertCoinButtonPanelController
     {
-        public IInsertCoinButtonPanel InsertCoinButtonPanel { get; private set; }
-        public ICoinAccepter CoinAccepter { get; private set; }
+        public IInsertCoinButtonPanel InsertCoinButtonPanel { get; }
+        public ICoinAccepter CoinAccepter { get; }
 
         public InsertCoinButtonPanelController(IInsertCoinButtonPanel insertCoinButtonPanel, ICoinAccepter coinAccepter)
         {
@@ -22,22 +22,22 @@ namespace Vending_Machine_Kata.UserControls
 
         private void InsertPennyButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinAccepter.Accept(CoinSize.SMALL);
+            CoinAccepter.Accept(CoinSize.Small);
         }
 
         private void InsertNickelButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinAccepter.Accept(CoinSize.MEDIUM);
+            CoinAccepter.Accept(CoinSize.Medium);
         }
 
         private void InsertDimeButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinAccepter.Accept(CoinSize.TINY);
+            CoinAccepter.Accept(CoinSize.Tiny);
         }
 
         private void InsertQuarterButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinAccepter.Accept(CoinSize.LARGE);
+            CoinAccepter.Accept(CoinSize.Large);
         }
     }
 }
