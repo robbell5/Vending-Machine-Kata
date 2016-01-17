@@ -142,6 +142,7 @@
             this.Controls.Add(this.InsertPennyButton);
             this.Controls.Add(this.ChangeReturnButton);
             this.Name = "SimpleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vending Machine";
             this.ResumeLayout(false);
             this.PerformLayout();

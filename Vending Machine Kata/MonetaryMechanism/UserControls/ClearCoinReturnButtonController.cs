@@ -20,7 +20,9 @@ namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
 
         private void ButtonEventListener(object sender, EventArgs eventArgs)
         {
-            CoinReturn.Clear();
+            decimal amountReturnedFromClear = CoinReturn.Clear();
+
+            DialogService.ShowMessage("You receive: " + $"{amountReturnedFromClear:C}");
         }
     }
 }

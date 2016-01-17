@@ -16,15 +16,14 @@ namespace Vending_Machine_Kata.MonetaryMechanism
             NotifyObservers();
         }
 
-        public List<ICoin> Clear()
+        public decimal Clear()
         {
-            List<ICoin> coinsCleared = new List<ICoin>();
-            coinsCleared.AddRange(Coins);
+            decimal sumOfAllCoins = AmountAvailable;
             Coins = new List<ICoin>();
 
             NotifyObservers();
 
-            return coinsCleared;
+            return sumOfAllCoins;
         }
 
         public void RegisterObserver(ICoinReturnObserver coinReturnObserver)

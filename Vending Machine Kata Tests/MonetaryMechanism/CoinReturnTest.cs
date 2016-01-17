@@ -55,27 +55,16 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
             Assert.AreEqual(expectedCoins, coinReturn.Coins);
         }
 
-        [Test]
-        public void TestClearReturnsAllCoins()
+        [TestCase(1, 2, 3)]
+        [TestCase(0.33, 11.23, 11.56)]
+        [TestCase(1.13, 3.99, 5.12)]
+        public void TestClearReturnsValueOfAllCoins(decimal coinOneValue, decimal coinTwoValue, decimal expectedTotalValue)
         {
             CoinReturn coinReturn = new CoinReturn();
+            coinReturn.AddCoin(new MockCoin() {ValueToReturn = coinOneValue });
+            coinReturn.AddCoin(new MockCoin() {ValueToReturn = coinTwoValue });
 
-            MockCoin firstCoinAdded = new MockCoin();
-            MockCoin secondCoinAdded = new MockCoin();
-            MockCoin thirdCoinAdded = new MockCoin();
-
-            List<ICoin> expectedCoins = new List<ICoin>()
-            {
-                firstCoinAdded,
-                secondCoinAdded,
-                thirdCoinAdded
-            };
-
-            coinReturn.AddCoin(firstCoinAdded);
-            coinReturn.AddCoin(secondCoinAdded);
-            coinReturn.AddCoin(thirdCoinAdded);
-
-            Assert.AreEqual(expectedCoins, coinReturn.Clear());
+            Assert.AreEqual(expectedTotalValue, coinReturn.Clear());
         }
 
         [Test]

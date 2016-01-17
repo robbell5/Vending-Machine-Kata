@@ -6,7 +6,7 @@ namespace Vending_Machine_Kata.MonetaryMechanism
     public interface ICoinReturn
     {
         void AddCoin(ICoin coin);
-        List<ICoin> Clear();
+        decimal Clear();
         List<ICoin> Coins { get; }
         List<ICoinReturnObserver> Observers { get; }
         decimal AmountAvailable { get; }
