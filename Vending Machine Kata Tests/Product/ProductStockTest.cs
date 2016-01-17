@@ -24,6 +24,8 @@ namespace Vending_Machine_Kata_Tests.Product
 
             Dictionary<IProduct, int> stock = productStock.Stock;
 
+            Assert.AreEqual(3, stock.Count);
+
             Assert.AreEqual(5, stock[Products.Cola]);
             Assert.AreEqual(5, stock[Products.Candy]);
             Assert.AreEqual(5, stock[Products.Chips]);
@@ -94,6 +96,17 @@ namespace Vending_Machine_Kata_Tests.Product
                 productStock.Remove(Products.Cola);
                 Assert.GreaterOrEqual(productStock.Count(Products.Cola), 0);
             }
+        }
+
+        [Test]
+        public void TestHandlesUnknownProductsGracefully()
+        {
+            MockProduct mockProduct = new MockProduct();
+
+            ProductStock productStock = new ProductStock();
+            
+            productStock.Remove(mockProduct);
+            Assert.AreEqual(0, productStock.Count(mockProduct));
         }
     }
 }

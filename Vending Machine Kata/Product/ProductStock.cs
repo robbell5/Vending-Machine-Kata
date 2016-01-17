@@ -9,13 +9,16 @@ namespace Vending_Machine_Kata.Product
 
         public int Count(IProduct product)
         {
-            return Stock[product];
+            if(Stock.ContainsKey(product))
+                return Stock[product];
+            return 0;
         }
 
         public void Remove(IProduct product)
         {
-            if(Stock[product] > 0)
-                Stock[product] = Stock[product] - 1;
+            if (Stock.ContainsKey(product))
+                if (Stock[product] > 0)
+                    Stock[product] = Stock[product] - 1;
         }
     }
 }
