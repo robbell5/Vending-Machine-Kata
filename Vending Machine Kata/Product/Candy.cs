@@ -2,7 +2,7 @@
 {
     public class Candy : IProduct
     {
-        public string DisplayName { get; }
-        public decimal Value { get; }
+        public string DisplayName => "Candy";
+        public decimal Value => 0.65m;
     }
 }

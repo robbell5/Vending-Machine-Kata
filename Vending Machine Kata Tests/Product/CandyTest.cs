@@ -16,5 +16,17 @@ namespace Vending_Machine_Kata_Tests.Product
         {
             Assert.IsInstanceOf(typeof (IProduct), new Candy());
         }
+
+        [Test]
+        public void TestDisplayName()
+        {
+            Assert.AreEqual("Candy", new Candy().DisplayName);
+        }
+
+        [Test]
+        public void TestValue()
+        {
+            Assert.AreEqual(0.65, new Candy().Value);
+        }
     }
 }
