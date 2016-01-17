@@ -30,5 +30,11 @@ namespace Vending_Machine_Kata_Tests.Product
         {
             Assert.AreSame(Products.Candy, Products.Candy);
         }
+
+        [Test]
+        public void TestChipsIsTreatedAsSingleton()
+        {
+            Assert.AreSame(Products.Chips, Products.Chips);
+        }
     }
 }
