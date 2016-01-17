@@ -14,7 +14,8 @@ namespace Vending_Machine_Kata.Product
 
         public void Remove(IProduct product)
         {
-            Stock[product] = Stock[product] - 1;
+            if(Stock[product] > 0)
+                Stock[product] = Stock[product] - 1;
         }
     }
 }

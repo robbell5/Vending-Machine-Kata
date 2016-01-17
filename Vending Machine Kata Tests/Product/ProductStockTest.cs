@@ -82,5 +82,18 @@ namespace Vending_Machine_Kata_Tests.Product
             Assert.AreEqual(5, productStock.Count(Products.Cola));
             Assert.AreEqual(5, productStock.Count(Products.Chips));
         }
+
+        [Test]
+        public void TestCountCantGoBelowZero()
+        {
+            ProductStock productStock = new ProductStock();
+
+            int originalCountAndMore = productStock.Count(Products.Cola) + 3;
+            for (int i = 0; i < originalCountAndMore; i++)
+            {
+                productStock.Remove(Products.Cola);
+                Assert.GreaterOrEqual(productStock.Count(Products.Cola), 0);
+            }
+        }
     }
 }
