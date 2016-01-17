@@ -2,7 +2,10 @@
 {
     public class Products
     {
-        public static Cola Cola => new Cola();
+        private static Cola ColaInstance { get; set; }
+
+        public static Cola Cola => ColaInstance ?? (ColaInstance = new Cola());
+
         public static object Chips => new Chips();
         public static object Candy => new Candy();
     }

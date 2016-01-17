@@ -18,5 +18,11 @@ namespace Vending_Machine_Kata_Tests.Product
             Assert.IsInstanceOf(typeof(Chips), Products.Chips);
             Assert.IsInstanceOf(typeof(Candy), Products.Candy);
         }
+
+        [Test]
+        public void TestColaIsTreatedAsSingleton()
+        {
+            Assert.AreSame(Products.Cola, Products.Cola);
+        }
     }
 }
