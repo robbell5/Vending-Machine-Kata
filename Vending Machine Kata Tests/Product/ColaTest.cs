@@ -11,11 +11,5 @@ namespace Vending_Machine_Kata_Tests.Product
         {
             Assert.IsInstanceOf(typeof(IProduct), new Cola());
         }
-
-        [Test]
-        public void TestDisplayName()
-        {
-            Assert.AreEqual("Cola", new Cola().DisplayName);
-        }
     }
 }
