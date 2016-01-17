@@ -22,7 +22,8 @@ namespace Vending_Machine_Kata.MonetaryMechanism.UserControls
         {
             decimal amountReturnedFromClear = CoinReturn.Clear();
 
-            DialogService.ShowMessage("You receive: " + $"{amountReturnedFromClear:C}");
+            if(amountReturnedFromClear > 0)
+                DialogService.ShowMessage("You receive: " + $"{amountReturnedFromClear:C}");
         }
     }
 }

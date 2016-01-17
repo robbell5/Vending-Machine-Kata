@@ -15,7 +15,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public List<ICoinReturnObserver> ObserversPassedToRegisterObserver { get; } = new List<ICoinReturnObserver>();
         public int NumberOfTimesRegisterObserverWasCalled { get; private set; }
         public decimal ValueToReturnFromAmountAvailable { get; set; } = 0;
-        public decimal ValueToReturnFromAClear { get; set; } = 0;
+        public decimal ValueToReturnFromClear { get; set; } = 0;
         public int NumberOfTimesClearWasCalled { get; set; }
 
         public void RegisterObserver(ICoinReturnObserver coinReturnObserver)
@@ -33,7 +33,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism
         public decimal Clear()
         {
             NumberOfTimesClearWasCalled++;
-            return ValueToReturnFromAClear;
+            return ValueToReturnFromClear;
         }
     }
 }

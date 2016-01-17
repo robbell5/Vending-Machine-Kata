@@ -48,7 +48,7 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
             MockCoinReturn mockCoinReturn = new MockCoinReturn();
             MockDialogService mockDialogService = new MockDialogService();
 
-            mockCoinReturn.ValueToReturnFromAClear = amountReturnedByCoinReturn;
+            mockCoinReturn.ValueToReturnFromClear = amountReturnedByCoinReturn;
             string expectedDialogText = "You receive: " + expectedFormatedAmount;
 
             new ClearCoinReturnButtonController(clearCoinReturnButton, mockCoinReturn, mockDialogService);
@@ -59,6 +59,24 @@ namespace Vending_Machine_Kata_Tests.MonetaryMechanism.UserControls
 
             Assert.AreEqual(1, mockDialogService.NumberOfTimesShowMessageWasCalled);
             Assert.AreEqual(expectedDialogText, mockDialogService.LastMessageShown);
+        }
+
+        [Test]
+        public void TestClickingButtonDoesNotDisplayDialogIfAmountReturnedIsZero()
+        {
+            Button clearCoinReturnButton = new Button();
+            MockCoinReturn mockCoinReturn = new MockCoinReturn();
+            MockDialogService mockDialogService = new MockDialogService();
+
+            mockCoinReturn.ValueToReturnFromClear = 0;
+
+            new ClearCoinReturnButtonController(clearCoinReturnButton, mockCoinReturn, mockDialogService);
+
+            Assert.AreEqual(0, mockDialogService.NumberOfTimesShowMessageWasCalled);
+
+            clearCoinReturnButton.PerformClick();
+
+            Assert.AreEqual(0, mockDialogService.NumberOfTimesShowMessageWasCalled);
         }
     }
 }
