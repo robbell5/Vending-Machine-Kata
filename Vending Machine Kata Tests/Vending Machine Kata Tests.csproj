@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Dialog\DialogServiceTest.cs" />
+    <Compile Include="Dialog\MockDialogService.cs" />
     <Compile Include="Display\CoinReturnDisplayControllerTest.cs" />
     <Compile Include="Display\VendingDisplayControllerTest.cs" />
     <Compile Include="MonetaryMechanism\CoinAccepterTest.cs" />

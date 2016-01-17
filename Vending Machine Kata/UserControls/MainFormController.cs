@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Vending_Machine_Kata.Dialog;
 using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
@@ -52,7 +53,7 @@ namespace Vending_Machine_Kata.UserControls
                 new CoinReturnDisplayController(GetTextBoxFromForm(CoinReturnDisplayTextBoxName), CoinReturn);
 
             ClearCoinReturnButtonController =
-                new ClearCoinReturnButtonController(GetButtonFromForm(ClearCoinReturnButtonName), CoinReturn);
+                new ClearCoinReturnButtonController(GetButtonFromForm(ClearCoinReturnButtonName), CoinReturn, new DialogService());
         }
 
         private Button GetButtonFromForm(string controlName)

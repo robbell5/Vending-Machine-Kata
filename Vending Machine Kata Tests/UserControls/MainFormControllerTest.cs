@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using NUnit.Framework;
+using Vending_Machine_Kata.Dialog;
 using Vending_Machine_Kata.Display;
 using Vending_Machine_Kata.MonetaryMechanism;
 using Vending_Machine_Kata.MonetaryMechanism.Coin;
@@ -173,6 +174,8 @@ namespace Vending_Machine_Kata_Tests.UserControls
             Assert.IsInstanceOf(typeof(ClearCoinReturnButtonController), clearCoinReturnButtonController);
             Assert.AreEqual(expectedClearCoinReturnButton, clearCoinReturnButtonController.Button);
             Assert.AreEqual(mainFormController.CoinReturn, clearCoinReturnButtonController.CoinReturn);
+            Assert.NotNull(clearCoinReturnButtonController.DialogService);
+            Assert.IsInstanceOf(typeof(DialogService), clearCoinReturnButtonController.DialogService);
         }
     }
 }
