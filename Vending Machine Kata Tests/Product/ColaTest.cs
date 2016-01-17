@@ -17,5 +17,11 @@ namespace Vending_Machine_Kata_Tests.Product
         {
             Assert.AreEqual("Cola", new Cola().DisplayName);
         }
+
+        [Test]
+        public void TestValue()
+        {
+            Assert.AreEqual(1, new Cola().Value);
+        }
     }
 }
