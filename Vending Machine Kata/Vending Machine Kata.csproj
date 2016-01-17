@@ -70,6 +70,7 @@
     <Compile Include="MonetaryMechanism\ICoinReturn.cs" />
     <Compile Include="MonetaryMechanism\UserControls\ReturnChangeButtonController.cs" />
     <Compile Include="MonetaryMechanism\UserControls\ClearCoinReturnButtonController.cs" />
+    <Compile Include="Product\Chips.cs" />
     <Compile Include="Product\Cola.cs" />
     <Compile Include="Product\IProduct.cs" />
     <Compile Include="Program.cs" />
