@@ -78,6 +78,7 @@
     <Compile Include="Product\ChipsTest.cs" />
     <Compile Include="Product\ColaTest.cs" />
     <Compile Include="Product\MockProduct.cs" />
+    <Compile Include="Product\MockProductStockObserver.cs" />
     <Compile Include="Product\ProductsTest.cs" />
     <Compile Include="Product\ProductStockTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

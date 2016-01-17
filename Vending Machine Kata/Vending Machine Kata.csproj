@@ -74,6 +74,7 @@
     <Compile Include="Product\Chips.cs" />
     <Compile Include="Product\Cola.cs" />
     <Compile Include="Product\IProduct.cs" />
+    <Compile Include="Product\IProductStockObserver.cs" />
     <Compile Include="Product\Products.cs" />
     <Compile Include="Product\ProductStock.cs" />
     <Compile Include="Program.cs" />

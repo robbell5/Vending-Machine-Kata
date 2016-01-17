@@ -108,5 +108,18 @@ namespace Vending_Machine_Kata_Tests.Product
             productStock.Remove(mockProduct);
             Assert.AreEqual(0, productStock.Count(mockProduct));
         }
+
+        [Test]
+        public void TestRegisterObserverAddsObserverToList()
+        {
+            ProductStock productStock = new ProductStock();
+            List<IProductStockObserver> productStockObservers = productStock.Observers;
+
+            Assert.AreEqual(0, productStockObservers.Count);
+
+            productStock.RegisterObserver(new MockProductStockObserver());
+
+            Assert.AreEqual(1, productStockObservers.Count);
+        }
     }
 }

@@ -7,6 +7,8 @@ namespace Vending_Machine_Kata.Product
         public Dictionary<IProduct, int> Stock
             = new Dictionary<IProduct, int> {{Products.Candy, 5}, {Products.Chips, 5}, {Products.Cola, 5}};
 
+        public List<IProductStockObserver> Observers = new List<IProductStockObserver>();
+
         public int Count(IProduct product)
         {
             if(Stock.ContainsKey(product))
@@ -19,6 +21,11 @@ namespace Vending_Machine_Kata.Product
             if (Stock.ContainsKey(product))
                 if (Stock[product] > 0)
                     Stock[product] = Stock[product] - 1;
+        }
+
+        public void RegisterObserver(IProductStockObserver productStockObserver)
+        {
+                Observers.Add(productStockObserver);
         }
     }
 }
