@@ -74,6 +74,7 @@
     <Compile Include="MonetaryMechanism\MockCoinReturnObserver.cs" />
     <Compile Include="MonetaryMechanism\UserControls\ReturnChangeButtonControllerTest.cs" />
     <Compile Include="MonetaryMechanism\UserControls\ClearCoinReturnButtonControllerTest.cs" />
+    <Compile Include="Product\CandyTest.cs" />
     <Compile Include="Product\ChipsTest.cs" />
     <Compile Include="Product\ColaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
