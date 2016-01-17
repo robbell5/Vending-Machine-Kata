@@ -102,11 +102,14 @@ namespace Vending_Machine_Kata_Tests.Product
         public void TestHandlesUnknownProductsGracefully()
         {
             MockProduct mockProduct = new MockProduct();
-
             ProductStock productStock = new ProductStock();
+            MockProductStockObserver mockProductStockObserver = new MockProductStockObserver();
+
+            productStock.RegisterObserver(mockProductStockObserver);
             
             productStock.Remove(mockProduct);
             Assert.AreEqual(0, productStock.Count(mockProduct));
+            Assert.AreEqual(0, mockProductStockObserver.NumberOfTimesProductStockUpdatedWasCalled);
         }
 
         [Test]
@@ -120,6 +123,33 @@ namespace Vending_Machine_Kata_Tests.Product
             productStock.RegisterObserver(new MockProductStockObserver());
 
             Assert.AreEqual(1, productStockObservers.Count);
+        }
+
+        [Test]
+        public void TestRemovingAProductNotifesAllObservers()
+        {
+            ProductStock productStock = new ProductStock();
+            MockProductStockObserver mockProductStockObserverOne = new MockProductStockObserver();
+            MockProductStockObserver mockProductStockObserverTwo = new MockProductStockObserver();
+
+            productStock.RegisterObserver(mockProductStockObserverOne);
+            productStock.RegisterObserver(mockProductStockObserverTwo);
+
+            productStock.Remove(Products.Cola);
+
+            Assert.AreEqual(1, mockProductStockObserverOne.NumberOfTimesProductStockUpdatedWasCalled);
+            Assert.AreEqual(Products.Cola, mockProductStockObserverOne.LastProductPassedToProductStockUpdated);
+
+            Assert.AreEqual(1, mockProductStockObserverTwo.NumberOfTimesProductStockUpdatedWasCalled);
+            Assert.AreEqual(Products.Cola, mockProductStockObserverTwo.LastProductPassedToProductStockUpdated);
+
+            productStock.Remove(Products.Candy);
+
+            Assert.AreEqual(2, mockProductStockObserverOne.NumberOfTimesProductStockUpdatedWasCalled);
+            Assert.AreEqual(Products.Candy, mockProductStockObserverOne.LastProductPassedToProductStockUpdated);
+
+            Assert.AreEqual(2, mockProductStockObserverTwo.NumberOfTimesProductStockUpdatedWasCalled);
+            Assert.AreEqual(Products.Candy, mockProductStockObserverTwo.LastProductPassedToProductStockUpdated);
         }
     }
 }

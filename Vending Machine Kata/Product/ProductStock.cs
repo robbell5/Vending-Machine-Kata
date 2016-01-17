@@ -20,7 +20,10 @@ namespace Vending_Machine_Kata.Product
         {
             if (Stock.ContainsKey(product))
                 if (Stock[product] > 0)
+                {
                     Stock[product] = Stock[product] - 1;
+                    Observers.ForEach(observer => observer.ProductStockUpdated(product));
+                }
         }
 
         public void RegisterObserver(IProductStockObserver productStockObserver)
