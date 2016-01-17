@@ -28,5 +28,59 @@ namespace Vending_Machine_Kata_Tests.Product
             Assert.AreEqual(5, stock[Products.Candy]);
             Assert.AreEqual(5, stock[Products.Chips]);
         }
+
+        [Test]
+        public void TestRemovingAColaDecrementsCountForColaOnly()
+        {
+            ProductStock productStock = new ProductStock();
+
+            productStock.Remove(Products.Cola);
+
+            Assert.AreEqual(4, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Chips));
+            Assert.AreEqual(5, productStock.Count(Products.Candy));
+
+            productStock.Remove(Products.Cola);
+
+            Assert.AreEqual(3, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Chips));
+            Assert.AreEqual(5, productStock.Count(Products.Candy));
+        }
+
+        [Test]
+        public void TestRemovingAChipsDecrementsCountForChipsOnly()
+        {
+            ProductStock productStock = new ProductStock();
+
+            productStock.Remove(Products.Chips);
+
+            Assert.AreEqual(4, productStock.Count(Products.Chips));
+            Assert.AreEqual(5, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Candy));
+
+            productStock.Remove(Products.Chips);
+
+            Assert.AreEqual(3, productStock.Count(Products.Chips));
+            Assert.AreEqual(5, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Candy));
+        }
+
+        [Test]
+        public void TestRemovingACandyDecrementsCountForCandyOnly()
+        {
+            ProductStock productStock = new ProductStock();
+
+            productStock.Remove(Products.Candy);
+
+            Assert.AreEqual(4, productStock.Count(Products.Candy));
+            Assert.AreEqual(5, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Chips));
+
+            productStock.Remove(Products.Candy);
+
+            Assert.AreEqual(3, productStock.Count(Products.Candy));
+            Assert.AreEqual(5, productStock.Count(Products.Cola));
+            Assert.AreEqual(5, productStock.Count(Products.Chips));
+        }
     }
 }

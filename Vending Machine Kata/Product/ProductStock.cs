@@ -5,16 +5,16 @@ namespace Vending_Machine_Kata.Product
     public class ProductStock
     {
         public Dictionary<IProduct, int> Stock
-            => new Dictionary<IProduct, int> {{Products.Candy, 5}, {Products.Chips, 5}, {Products.Cola, 5}};
+            = new Dictionary<IProduct, int> {{Products.Candy, 5}, {Products.Chips, 5}, {Products.Cola, 5}};
 
         public int Count(IProduct product)
         {
-            return 5;
+            return Stock[product];
         }
 
-        public void Remove(Cola cola)
+        public void Remove(IProduct product)
         {
-            throw new System.NotImplementedException();
+            Stock[product] = Stock[product] - 1;
         }
     }
 }
